@@ -105,7 +105,7 @@ class CustomTabBarItem: UIView {
 
         titleLabel = UILabel()
         titleLabel.text = title
-        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.font = UIFont.montserratMedium14()
         titleLabel.textAlignment = .center
         titleLabel.isHidden = !isSelected
         titleLabel.alpha = isSelected ? 1.0 : 0.0
@@ -215,11 +215,12 @@ class CustomTabBarItem: UIView {
         let imageFrame = imageView.frame
         let imageX = isSelected ? (bounds.width / 2 - imageFrame.width / 2) : (bounds.width / 2 - imageFrame.width / 2 + 8)
         
-        let backgroundWidth = isSelected ? (bounds.width - 2 * 5) : (imageFrame.width + 8)
-        
+        let backgroundWidth = bounds.width - 2 * 5
         let backgroundX = isSelected ? (imageX - 8) : (bounds.width / 2 - backgroundWidth / 2)
         
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [.curveEaseInOut], animations: {
+        let newX = isSelected ? bounds.midX : backgroundX
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
             self.imageView.tintColor = self.isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.textColor = self.isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.alpha = self.isSelected ? 1 : 0
@@ -227,12 +228,7 @@ class CustomTabBarItem: UIView {
             self.backgroundView.alpha = self.isSelected ? 1 : 0
             self.imageView.frame.origin.x = imageX
             self.titleLabel.frame.origin.x = self.imageView.frame.maxX + 8
-            self.backgroundView.frame = CGRect(
-                x: backgroundX,
-                y: imageFrame.minY - 12,
-                width: backgroundWidth,
-                height: imageFrame.height + 24
-            )
+            self.backgroundView.frame.origin.x = newX
         }, completion: { _ in
             if self.isSelected {
                 self.titleLabel.isHidden = false
