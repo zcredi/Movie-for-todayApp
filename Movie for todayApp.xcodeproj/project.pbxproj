@@ -11,6 +11,7 @@
 		378B75EF2B39C1B900A9FC25 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378B75EC2B39C1B900A9FC25 /* Montserrat-Medium.ttf */; };
 		378B75F02B39C1B900A9FC25 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378B75ED2B39C1B900A9FC25 /* Montserrat-SemiBold.ttf */; };
 		378B75F12B39C1B900A9FC25 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378B75EE2B39C1B900A9FC25 /* Montserrat-Regular.ttf */; };
+		37D48DFD2B3A361C00FE13CE /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D48DFC2B3A361C00FE13CE /* CustomTabBarItem.swift */; };
 		868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8681668F2B3969D4007FDF8F /* AppDelegate.swift */; };
 		868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166912B3969D4007FDF8F /* SceneDelegate.swift */; };
 		868166992B3969D5007FDF8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868166982B3969D5007FDF8F /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		378B75EC2B39C1B900A9FC25 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../../../../../../Downloads/Montserrat/static/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		378B75ED2B39C1B900A9FC25 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../../../../Downloads/Montserrat/static/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		378B75EE2B39C1B900A9FC25 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../../Downloads/Montserrat/static/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		37D48DFC2B3A361C00FE13CE /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
 		8681668C2B3969D4007FDF8F /* Movie for todayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie for todayApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8681668F2B3969D4007FDF8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		868166912B3969D4007FDF8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				378B75E92B39BFAA00A9FC25 /* CustomTabBarController.swift */,
+				37D48DFC2B3A361C00FE13CE /* CustomTabBarItem.swift */,
 			);
 			path = CustomTabBar;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */,
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
+				37D48DFD2B3A361C00FE13CE /* CustomTabBarItem.swift in Sources */,
 				378B75EA2B39BFAA00A9FC25 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
 				868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */,
