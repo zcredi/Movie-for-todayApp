@@ -65,7 +65,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         view.addSubview(customTabBar)
         
         let tabTitles = ["Home", "Search", "Tree", "Profile"]
-        let tabImages = ["house.fill", "magnifyingglass", "leaf.fill", "person.fill"]
+        let tabImages = ["house.fill", "magnifyingglass", "puzzlepiece.fill", "person.fill"]
         
         let itemWidth = view.bounds.width / CGFloat(tabTitles.count)
         
