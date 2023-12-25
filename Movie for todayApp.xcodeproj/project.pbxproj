@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		378B75EA2B39BFAA00A9FC25 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378B75E92B39BFAA00A9FC25 /* CustomTabBarController.swift */; };
+		378B75EF2B39C1B900A9FC25 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378B75EC2B39C1B900A9FC25 /* Montserrat-Medium.ttf */; };
+		378B75F02B39C1B900A9FC25 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378B75ED2B39C1B900A9FC25 /* Montserrat-SemiBold.ttf */; };
+		378B75F12B39C1B900A9FC25 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378B75EE2B39C1B900A9FC25 /* Montserrat-Regular.ttf */; };
 		868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8681668F2B3969D4007FDF8F /* AppDelegate.swift */; };
 		868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166912B3969D4007FDF8F /* SceneDelegate.swift */; };
 		868166992B3969D5007FDF8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868166982B3969D5007FDF8F /* Assets.xcassets */; };
@@ -14,12 +18,13 @@
 		868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166E42B3981BE007FDF8F /* UIColor+App.swift */; };
 		868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166E62B3981C7007FDF8F /* UIFont+App.swift */; };
 		868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166E82B3981D3007FDF8F /* UILabel+App.swift */; };
-		868166ED2B3981FD007FDF8F /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 868166EA2B3981FD007FDF8F /* Montserrat-Medium.ttf */; };
-		868166EE2B3981FD007FDF8F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 868166EB2B3981FD007FDF8F /* Montserrat-SemiBold.ttf */; };
-		868166EF2B3981FD007FDF8F /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 868166EC2B3981FD007FDF8F /* Montserrat-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		378B75E92B39BFAA00A9FC25 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		378B75EC2B39C1B900A9FC25 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../../../../../../Downloads/Montserrat/static/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		378B75ED2B39C1B900A9FC25 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../../../../Downloads/Montserrat/static/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		378B75EE2B39C1B900A9FC25 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../../Downloads/Montserrat/static/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		8681668C2B3969D4007FDF8F /* Movie for todayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie for todayApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8681668F2B3969D4007FDF8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		868166912B3969D4007FDF8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,9 +34,6 @@
 		868166E42B3981BE007FDF8F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
 		868166E62B3981C7007FDF8F /* UIFont+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+App.swift"; sourceTree = "<group>"; };
 		868166E82B3981D3007FDF8F /* UILabel+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+App.swift"; sourceTree = "<group>"; };
-		868166EA2B3981FD007FDF8F /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../../../../Montserrat (1)/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
-		868166EB2B3981FD007FDF8F /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../../Montserrat (1)/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
-		868166EC2B3981FD007FDF8F /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../Montserrat (1)/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		378B75EB2B39BFB100A9FC25 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				378B75E92B39BFAA00A9FC25 /* CustomTabBarController.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
 		86157FF02B398E99000458BD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 				868166DD2B398153007FDF8F /* Profile */,
 				868166DE2B398153007FDF8F /* Onboarding */,
 				868166DF2B398153007FDF8F /* Wishlist */,
+				378B75EB2B39BFB100A9FC25 /* CustomTabBar */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -182,9 +193,9 @@
 		868166E12B398167007FDF8F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				868166EA2B3981FD007FDF8F /* Montserrat-Medium.ttf */,
-				868166EC2B3981FD007FDF8F /* Montserrat-Regular.ttf */,
-				868166EB2B3981FD007FDF8F /* Montserrat-SemiBold.ttf */,
+				378B75EC2B39C1B900A9FC25 /* Montserrat-Medium.ttf */,
+				378B75EE2B39C1B900A9FC25 /* Montserrat-Regular.ttf */,
+				378B75ED2B39C1B900A9FC25 /* Montserrat-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -227,7 +238,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					8681668B2B3969D4007FDF8F = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -257,10 +268,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				378B75F12B39C1B900A9FC25 /* Montserrat-Regular.ttf in Resources */,
 				8681669C2B3969D5007FDF8F /* LaunchScreen.storyboard in Resources */,
-				868166ED2B3981FD007FDF8F /* Montserrat-Medium.ttf in Resources */,
-				868166EE2B3981FD007FDF8F /* Montserrat-SemiBold.ttf in Resources */,
-				868166EF2B3981FD007FDF8F /* Montserrat-Regular.ttf in Resources */,
+				378B75F02B39C1B900A9FC25 /* Montserrat-SemiBold.ttf in Resources */,
+				378B75EF2B39C1B900A9FC25 /* Montserrat-Medium.ttf in Resources */,
 				868166992B3969D5007FDF8F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +285,7 @@
 			files = (
 				868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */,
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
+				378B75EA2B39BFAA00A9FC25 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
 				868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */,
 				868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */,
@@ -330,6 +342,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -390,6 +403,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -417,7 +431,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5MT2PBNQ85;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Movie for todayApp/Info.plist";
+				INFOPLIST_FILE = "Movie for todayApp/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -448,7 +462,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5MT2PBNQ85;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Movie for todayApp/Info.plist";
+				INFOPLIST_FILE = "Movie for todayApp/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
