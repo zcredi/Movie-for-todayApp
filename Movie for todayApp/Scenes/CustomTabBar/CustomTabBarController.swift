@@ -163,32 +163,32 @@ class CustomTabBarItem: UIView {
         backgroundView.alpha = isSelected ? 1 : 0
 
         // Adjust the backgroundView frame to encompass both image and text
-        let totalContentWidth = isSelected ? (imageView.frame.width + titleLabel.intrinsicContentSize.width + 16) : imageView.frame.width
-        let contentOffset = (bounds.width - totalContentWidth) / 2
+        let totalWidth = isSelected ? (imageView.frame.width + titleLabel.intrinsicContentSize.width + 16) : imageView.frame.width
+        let contentOffset = (bounds.width - totalWidth) / 2
         backgroundView.frame = CGRect(
-          x: contentOffset,
-          y: imageView.frame.minY - 4,
-          width: totalContentWidth,
-          height: imageView.frame.height + 8
+            x: contentOffset,
+            y: imageView.frame.minY - 4,
+            width: totalWidth,
+            height: imageView.frame.height + 8
         )
 
         // Adjust the imageView transform based on selection
         imageView.transform = isSelected ? CGAffineTransform(translationX: -30, y: 0) : .identity
         layoutIfNeeded()
-      }
+    }
     
     func animate(isSelected: Bool) {
         titleLabel.isHidden = false
         backgroundView.isHidden = false
-        
+
         let labelSize = titleLabel.intrinsicContentSize
         let imageFrame = imageView.frame
         let totalWidth = isSelected ? (imageFrame.width + labelSize.width + 16) : imageFrame.width
         let imageX = isSelected ? (bounds.width / 2 - totalWidth / 2) : (bounds.width / 2 - imageFrame.width / 2)
-        
+
         let backgroundWidth = isSelected ? (bounds.width - 2 * 5) : (imageFrame.width + 8)
         let backgroundX = isSelected ? (imageX - 8) : (bounds.width / 2 - backgroundWidth / 2)
-        
+
         UIView.animate(withDuration: 0.3, animations: {
             self.imageView.tintColor = isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.textColor = isSelected ? .primaryBlueAccent : .textColorGrey
@@ -218,8 +218,8 @@ class CustomTabBarItem: UIView {
         let backgroundWidth = isSelected ? (bounds.width - 2 * 5) : (imageFrame.width + 8)
         
         let backgroundX = isSelected ? (imageX - 8) : (bounds.width / 2 - backgroundWidth / 2)
-
-        UIView.animate(withDuration: 0.3, animations: {
+        
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [.curveEaseInOut], animations: {
             self.imageView.tintColor = self.isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.textColor = self.isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.alpha = self.isSelected ? 1 : 0
