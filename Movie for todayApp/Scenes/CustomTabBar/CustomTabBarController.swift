@@ -17,22 +17,30 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             self.delegate = self
             setupViewControllers()
             setupCustomTabBar()
+        selectTab(at: 0)
         }
 
-        override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            selectTab(at: 0) // Ensure the initial tab is set after the views have appeared
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        selectTab(at: 0) // Ensure the initial tab is set after the views have appeared
+        updateTabBarItemsLayout()
+        customTabBarItems[0].configureInitialLayout() // Call configureInitialLayout() for the first tab
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        customTabBar.frame = tabBar.frame
+        customTabBar.backgroundColor = .primaryDark
+        updateTabBarItemsLayout()
+    }
+    
+    func updateTabBarItemsLayout() {
+        let itemWidth = customTabBar.bounds.width / CGFloat(customTabBarItems.count)
+        for (index, item) in customTabBarItems.enumerated() {
+            item.frame = CGRect(x: itemWidth * CGFloat(index), y: 0, width: itemWidth, height: customTabBar.bounds.height)
+            item.layoutIfNeeded()
         }
-
-        override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            customTabBar.frame = tabBar.frame
-            customTabBar.backgroundColor = .primaryDark
-            let itemWidth = customTabBar.bounds.width / CGFloat(customTabBarItems.count)
-            for (index, item) in customTabBarItems.enumerated() {
-                item.frame = CGRect(x: itemWidth * CGFloat(index), y: 0, width: itemWidth, height: customTabBar.bounds.height)
-            }
-        }
+    }
     
     func setupViewControllers() {
         // Initialize your view controllers and add them to the tab bar
@@ -156,15 +164,13 @@ class CustomTabBarItem: UIView {
     
     func configureInitialLayout() {
         imageView.tintColor = isSelected ? .primaryBlueAccent : .textColorGrey
-        titleLabel.textColor = .primaryBlueAccent
-        titleLabel.isHidden = !isSelected
+        titleLabel.textColor = isSelected ? .primaryBlueAccent : .textColorGrey
         titleLabel.alpha = isSelected ? 1 : 0
-        backgroundView.isHidden = !isSelected
         backgroundView.alpha = isSelected ? 1 : 0
 
         // Adjust the backgroundView frame to encompass both image and text
         let totalWidth = isSelected ? (imageView.frame.width + titleLabel.intrinsicContentSize.width + 16) : imageView.frame.width
-        let contentOffset = (bounds.width - totalWidth) / 2
+        let contentOffset = max((bounds.width - totalWidth) / 2, 0)
         backgroundView.frame = CGRect(
             x: contentOffset,
             y: imageView.frame.minY - 4,
@@ -174,6 +180,16 @@ class CustomTabBarItem: UIView {
 
         // Adjust the imageView transform based on selection
         imageView.transform = isSelected ? CGAffineTransform(translationX: -30, y: 0) : .identity
+
+        // Show or hide the titleLabel and backgroundView based on isSelected
+        if isSelected {
+            titleLabel.isHidden = false
+            backgroundView.isHidden = false
+        } else {
+            titleLabel.isHidden = true
+            backgroundView.isHidden = true
+        }
+
         layoutIfNeeded()
     }
     
@@ -187,18 +203,18 @@ class CustomTabBarItem: UIView {
         let imageX = isSelected ? (bounds.width / 2 - totalWidth / 2) : (bounds.width / 2 - imageFrame.width / 2)
 
         let backgroundWidth = isSelected ? (bounds.width - 2 * 5) : (imageFrame.width + 8)
-        let backgroundX = isSelected ? (imageX - 8) : (bounds.width / 2 - backgroundWidth / 2)
+        let backgroundX = isSelected ? (bounds.width / 2 - backgroundWidth / 2) : (bounds.width / 2 - imageFrame.width / 2)
 
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: isSelected ? 0.0 : 0.3, animations: {
             self.imageView.tintColor = isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.textColor = isSelected ? .primaryBlueAccent : .textColorGrey
             self.titleLabel.alpha = isSelected ? 1 : 0
             self.backgroundView.backgroundColor = isSelected ? .primarySoft : .clear
             self.backgroundView.alpha = isSelected ? 1 : 0
-            self.imageView.frame.origin.x = imageX
-            self.titleLabel.frame.origin.x = self.imageView.frame.maxX + 8
+            self.imageView.frame.origin.x = max(imageX, 0)
+            self.titleLabel.frame.origin.x = max(imageX + imageFrame.width + 8, 0)
             self.backgroundView.frame = CGRect(
-                x: backgroundX,
+                x: max(backgroundX, 0),
                 y: imageFrame.minY - 12,
                 width: backgroundWidth,
                 height: imageFrame.height + 24
