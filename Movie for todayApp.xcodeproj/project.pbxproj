@@ -16,6 +16,11 @@
 		86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FFD2B39FF4B000458BD /* OnboardingViewController.swift */; };
 		861580002B39FF58000458BD /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FFF2B39FF58000458BD /* WishlistViewController.swift */; };
 		861580022B39FF77000458BD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861580012B39FF77000458BD /* APIManager.swift */; };
+		86778CDC2B3AE07800E548F1 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86778CDB2B3AE07800E548F1 /* CustomTabBarController.swift */; };
+		86778CDE2B3AE08400E548F1 /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86778CDD2B3AE08400E548F1 /* CustomTabBarItem.swift */; };
+		86778CE22B3AE0CB00E548F1 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86778CDF2B3AE0CB00E548F1 /* Montserrat-Regular.ttf */; };
+		86778CE32B3AE0CB00E548F1 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86778CE02B3AE0CB00E548F1 /* Montserrat-Medium.ttf */; };
+		86778CE42B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86778CE12B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf */; };
 		868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8681668F2B3969D4007FDF8F /* AppDelegate.swift */; };
 		868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166912B3969D4007FDF8F /* SceneDelegate.swift */; };
 		868166992B3969D5007FDF8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 868166982B3969D5007FDF8F /* Assets.xcassets */; };
@@ -23,9 +28,6 @@
 		868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166E42B3981BE007FDF8F /* UIColor+App.swift */; };
 		868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166E62B3981C7007FDF8F /* UIFont+App.swift */; };
 		868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868166E82B3981D3007FDF8F /* UILabel+App.swift */; };
-		868166ED2B3981FD007FDF8F /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 868166EA2B3981FD007FDF8F /* Montserrat-Medium.ttf */; };
-		868166EE2B3981FD007FDF8F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 868166EB2B3981FD007FDF8F /* Montserrat-SemiBold.ttf */; };
-		868166EF2B3981FD007FDF8F /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 868166EC2B3981FD007FDF8F /* Montserrat-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,11 @@
 		86157FFD2B39FF4B000458BD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		86157FFF2B39FF58000458BD /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		861580012B39FF77000458BD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		86778CDB2B3AE07800E548F1 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		86778CDD2B3AE08400E548F1 /* CustomTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
+		86778CDF2B3AE0CB00E548F1 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		86778CE02B3AE0CB00E548F1 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		86778CE12B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		8681668C2B3969D4007FDF8F /* Movie for todayApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie for todayApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8681668F2B3969D4007FDF8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		868166912B3969D4007FDF8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,9 +54,6 @@
 		868166E42B3981BE007FDF8F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
 		868166E62B3981C7007FDF8F /* UIFont+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+App.swift"; sourceTree = "<group>"; };
 		868166E82B3981D3007FDF8F /* UILabel+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+App.swift"; sourceTree = "<group>"; };
-		868166EA2B3981FD007FDF8F /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../../../../Montserrat (1)/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
-		868166EB2B3981FD007FDF8F /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../../Montserrat (1)/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
-		868166EC2B3981FD007FDF8F /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../Montserrat (1)/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,15 @@
 				861580012B39FF77000458BD /* APIManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		86778CDA2B3AE06100E548F1 /* NavigationModule */ = {
+			isa = PBXGroup;
+			children = (
+				86778CDB2B3AE07800E548F1 /* CustomTabBarController.swift */,
+				86778CDD2B3AE08400E548F1 /* CustomTabBarItem.swift */,
+			);
+			path = NavigationModule;
 			sourceTree = "<group>";
 		};
 		868166832B3969D4007FDF8F = {
@@ -95,6 +108,7 @@
 				868166D62B39814D007FDF8F /* Models */,
 				868166D72B398153007FDF8F /* Scenes */,
 				868166E22B39818B007FDF8F /* UIConstants */,
+				86778CDA2B3AE06100E548F1 /* NavigationModule */,
 				868166E02B398167007FDF8F /* SupportingFiles */,
 			);
 			path = "Movie for todayApp";
@@ -209,9 +223,9 @@
 		868166E12B398167007FDF8F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				868166EA2B3981FD007FDF8F /* Montserrat-Medium.ttf */,
-				868166EC2B3981FD007FDF8F /* Montserrat-Regular.ttf */,
-				868166EB2B3981FD007FDF8F /* Montserrat-SemiBold.ttf */,
+				86778CE02B3AE0CB00E548F1 /* Montserrat-Medium.ttf */,
+				86778CDF2B3AE0CB00E548F1 /* Montserrat-Regular.ttf */,
+				86778CE12B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -284,10 +298,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86778CE22B3AE0CB00E548F1 /* Montserrat-Regular.ttf in Resources */,
 				8681669C2B3969D5007FDF8F /* LaunchScreen.storyboard in Resources */,
-				868166ED2B3981FD007FDF8F /* Montserrat-Medium.ttf in Resources */,
-				868166EE2B3981FD007FDF8F /* Montserrat-SemiBold.ttf in Resources */,
-				868166EF2B3981FD007FDF8F /* Montserrat-Regular.ttf in Resources */,
+				86778CE32B3AE0CB00E548F1 /* Montserrat-Medium.ttf in Resources */,
+				86778CE42B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf in Resources */,
 				868166992B3969D5007FDF8F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,10 +315,12 @@
 			files = (
 				868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */,
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
+				86778CDC2B3AE07800E548F1 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
 				86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */,
 				861580002B39FF58000458BD /* WishlistViewController.swift in Sources */,
 				86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */,
+				86778CDE2B3AE08400E548F1 /* CustomTabBarItem.swift in Sources */,
 				861580022B39FF77000458BD /* APIManager.swift in Sources */,
 				868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */,
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
