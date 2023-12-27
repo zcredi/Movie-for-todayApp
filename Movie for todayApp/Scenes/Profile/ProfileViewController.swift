@@ -11,17 +11,32 @@ protocol ProfileDisplayLogic: AnyObject {
     func displayProfile()
 }
 // MARK: - Profile Model
-
-struct ProfileSection {
-    let title: String
-    let options: [ProfileDetailsOption]
+// Profile top image section
+struct ProfileHeaderModel {
+    let image: UIImage?
+    let handler: (() -> Void)
 }
-
-struct ProfileDetailsOption {
+// Profile settings menu items section
+struct ProfileSettingsItemModel {
     let title: String
     let image: UIImage?
     let imageBackGroundColor: UIColor
     let handler: (() -> Void)
+}
+// Logout section
+struct ProfileLogOutModel {
+    let title: String
+    let handler: (() -> Void)
+}
+// Section types
+enum ProfileDetailsType {
+    case header(model: ProfileHeaderModel)
+    case settingsMenuItem(model: ProfileSettingsItemModel)
+    case logout(model: ProfileLogOutModel)
+}
+struct ProfileSection {
+    let title: String?
+    let options: [ProfileDetailsType]
 }
 // MARK: - Profile View Controller
 class ProfileViewController: UIViewController, UITableViewDelegate {
@@ -58,10 +73,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
         setupUI()
     }
 }
-// MARK: - ProfileTableViewCell type
-//class ProfileTableViewCell: UITableViewCell {
-//    func setup(with viewModel)
-//}
 // MARK: - Display logic
 extension ProfileViewController: ProfileDisplayLogic {
     func displayProfile() {
@@ -70,14 +81,15 @@ extension ProfileViewController: ProfileDisplayLogic {
 }
 // MARK: - Setup UI
 extension ProfileViewController {
-    
     // MARK: - UI Elements
     private func createTableView() -> UITableView {
         let tableView = UITableView(frame: .zero, style: .grouped)
-//        tableView.register(ProfileDetailsTableViewCell.self,
-//                           forCellReuseIdentifier: ProfileDetailsTableViewCell.identifier)
-        tableView.register(ProfileDetailsTableViewCell.self,
-                                   forCellReuseIdentifier: ProfileDetailsTableViewCell.identifier)
+        tableView.register(ProfileHeaderCell.self,
+                                   forCellReuseIdentifier: ProfileHeaderCell.identifier)
+        tableView.register(ProfileSettingsItemCell.self,
+                                   forCellReuseIdentifier: ProfileSettingsItemCell.identifier)
+        tableView.register(ProfileLogOutCell.self,
+                                   forCellReuseIdentifier: ProfileLogOutCell.identifier)
         //tableView.backgroundColor = UIColor.primaryDark
         return tableView
     }
@@ -87,38 +99,65 @@ extension ProfileViewController {
         setupView()
         setupConstraints()
     }
-    
+    // MARK: - Configure cell models
     private func configure() {
-        //General section
-        self.models.append(ProfileSection(title: "General", options: [
-            ProfileDetailsOption(title: "Notification",
-                                 image: UIImage(systemName: "bell.fill"),
-                                 imageBackGroundColor: UIColor.primaryDark,
-                                 handler: {
-                                     print("Notification cell tapped")
-                                 }),
-            ProfileDetailsOption(title: "Language",
-                                 image: UIImage(systemName: "pencil"),
-                                 imageBackGroundColor: UIColor.primaryDark,
-                                 handler: {
-                                     print("Language cell tapped")
-                                 })
+        // Header section
+        let header: ProfileHeaderModel =
+            .init(image: UIImage(systemName: "plane")) {
+                print("Header")
+            }
+        // Settings section items
+        // General
+        let notification: ProfileSettingsItemModel =
+            .init(title: "Notification",
+                  image: UIImage(systemName: "bell.fill"),
+                  imageBackGroundColor: .primaryDark) {
+                print("Notification cell tapped")
+            }
+        let language: ProfileSettingsItemModel =
+            .init(title: "Language",
+                  image: UIImage(systemName: "pencil"),
+                  imageBackGroundColor: .primaryDark) {
+                print("Language cell tapped")
+            }
+        // More
+        let legalAndPolicies: ProfileSettingsItemModel =
+            .init(title: "Legal and Policies",
+                  image: UIImage(systemName: "list.bullet"),
+                  imageBackGroundColor: .primaryDark) {
+                print("Legal and Policies cell tapped")
+            }
+        let aboutUs: ProfileSettingsItemModel =
+            .init(title: "About Us",
+                  image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"),
+                  imageBackGroundColor: .primaryDark) {
+                print("About Us cell tapped")
+            }
+        // Log out section
+        let logOut: ProfileLogOutModel =
+            .init(title: "LogOut") {
+                print("LogOut")
+            }
+        
+        // Header
+        self.models.append(.init(title: nil, options: [
+            .header(model: header)
         ]))
-        //More section
-        self.models.append(ProfileSection(title: "More", options: [
-            ProfileDetailsOption(title: "Legal and Policies",
-                                 image: UIImage(systemName: "list.bullet"),
-                                 imageBackGroundColor: UIColor.primaryDark,
-                                 handler: {
-                                     print("More cell tapped")
-                                 }),
-            ProfileDetailsOption(title: "About Us",
-                                 image: UIImage(systemName: "pencil.tip.crop.circle.badge.plus"),
-                                 imageBackGroundColor: UIColor.primaryDark,
-                                 handler: {
-                                     print("About Us cell tapped")
-                                 })
+        // General
+        self.models.append(.init(title: "General", options: [
+            .settingsMenuItem(model: notification),
+            .settingsMenuItem(model: language)
         ]))
+        // More
+        self.models.append(.init(title: "More", options: [
+            .settingsMenuItem(model: legalAndPolicies),
+            .settingsMenuItem(model: aboutUs)
+        ]))
+        // LogOut
+        self.models.append(.init(title: nil, options: [
+            .logout(model: logOut)
+        ]))
+        //
     }
     
     private func setupView() {
@@ -150,35 +189,47 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: ProfileDetailsTableViewCell.identifier,
-            for: indexPath
-        ) as? ProfileDetailsTableViewCell else {
-            return UITableViewCell()
+        switch model.self {
+        case .header(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ProfileHeaderCell.identifier,
+                for: indexPath
+            ) as? ProfileHeaderCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+        case .settingsMenuItem(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ProfileSettingsItemCell.identifier,
+                for: indexPath
+            ) as? ProfileSettingsItemCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+        case .logout(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ProfileLogOutCell.identifier,
+                for: indexPath
+            ) as? ProfileLogOutCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
         }
-        cell.configure(with: model)
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let model = models[indexPath.section].options[indexPath.row]
-        model.handler()
+        let type = models[indexPath.section].options[indexPath.row]
+        switch type.self {
+        case .header(let model):
+            model.handler()
+        case .settingsMenuItem:
+            return
+        case .logout(let model):
+            model.handler()
+        }
     }
-    
 }
-
-
- //MARK: - Preview
-//import SwiftUI
-//struct MainViewPreviews: PreviewProvider {
-//    static var previews: some View {
-//        SwiftUIHelloWorldView()
-//    }
-//}
-//struct SwiftUIHelloWorldView: UIViewRepresentable {
-//    func makeUIView(context: Context) -> UIView {
-//        return ProfileViewController().view
-//    }
-//    func updateUIView(_ view: UIView, context: Context) {}
-//}

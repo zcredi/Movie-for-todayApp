@@ -1,5 +1,5 @@
 //
-//  ProfileDetailsTableViewCell.swift
+//  ProfileLogOutCell.swift
 //  Movie for todayApp
 //
 //  Created by Andrei Shpartou on 27/12/2023.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ProfileDetailsTableViewCell: UITableViewCell {
-    static let identifier = "ProfileDetailsTableViewCell"
+class ProfileLogOutCell: UITableViewCell {
+    static let identifier = "ProfileLogOutCell"
     
     private lazy var iconContainer: UIView = {
         let view = UIView()
@@ -68,10 +68,11 @@ class ProfileDetailsTableViewCell: UITableViewCell {
         iconContainer.backgroundColor = nil
     }
     
-    func configure(with model: ProfileDetailsOption) {
+    func configure(with model: ProfileLogOutModel) {
         label.text = model.title
-        iconImageView.image = model.image
-        iconContainer.backgroundColor = model.imageBackGroundColor
+        //iconImageView.image = model.image
+        //iconContainer.backgroundColor = model.imageBackGroundColor
     }
     
 }
+
