@@ -84,7 +84,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
-            cell.movieImageView.image = UIImage(named: "movie\\(indexPath.row + 1)")
+            cell.movieImageView.image = UIImage(named: "movie\(indexPath.row + 1)")
             cell.movieTitleLabel.text = movies[indexPath.row]
             return cell
         }
