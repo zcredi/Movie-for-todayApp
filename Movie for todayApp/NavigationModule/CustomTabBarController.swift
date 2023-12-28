@@ -48,12 +48,11 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let homeViewController = UIViewController()
         let searchViewController = UIViewController()
         let treeViewController = UIViewController()
-        let profileViewController = UIViewController()
+        let profileViewController = ProfileViewController()
         
         homeViewController.view.backgroundColor = .white
         searchViewController.view.backgroundColor = .gray
         treeViewController.view.backgroundColor = .cyan
-        profileViewController.view.backgroundColor = .blue
         
         viewControllers = [homeViewController, searchViewController, treeViewController, profileViewController]
     }
