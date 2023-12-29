@@ -9,6 +9,15 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
     
+    private let sliderData: [SliderItem] = [
+    
+        SliderItem(color: .brown, title: "Slide 1", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: ""),
+        SliderItem(color: .orange, title: "Slide 2", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: ""),
+        SliderItem(color: .green, title: "Slide 3", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "")
+    
+    ]
+    
+    
     lazy var onboardingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height)
@@ -50,14 +59,22 @@ class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        sliderData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UICollectionViewCell.self), for: indexPath)
-        cell.contentView.backgroundColor = .green.withAlphaComponent(0.5)
+        cell.contentView.backgroundColor = sliderData[indexPath.item].color
         return cell
     }
     
     
+}
+
+
+struct SliderItem {
+    var color: UIColor
+    var title: String
+    var text: String
+    var animationName: String
 }
