@@ -4,40 +4,28 @@
 //
 //  Created by Andrei Shpartou on 27/12/2023.
 //
-
 import UIKit
 
 class ProfileHeaderCell: UITableViewCell {
     static let identifier = "ProfileHeaderCell"
     
-    private lazy var iconContainer: UIView = {
-        let view = UIView()
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
-    private lazy var iconImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        //imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .white
+        
         return imageView
     }()
     
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        //label.text = nil
-        //label.font =
-        //label.textColor
-        return label
-    }()
+    private lazy var nameLabel: UILabel = { UILabel(text: "", font: .montserratSemiBold14(), textColor: .textColorWhite) }()
+    
+    private lazy var emailLabel: UILabel = { UILabel(text: "", font: .montserratRegular10(), textColor: .textColorDarkGrey) }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(iconContainer)
-        iconContainer.addSubview(iconImageView)
-        contentView.addSubview(label)
+        contentView.addSubview(profileImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(emailLabel)
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
     }
@@ -48,30 +36,32 @@ class ProfileHeaderCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 10, y: 6, width: size, height: size)
+        
+        let size = contentView.frame.size.height
         
         let imageSize = size / 1.5
-        iconImageView.frame = CGRect(x: (size - imageSize) / 2, y: (size - imageSize) / 2, width: imageSize, height: imageSize)
+        profileImageView.frame = CGRect(x: (size - imageSize) / 2, y: (size - imageSize) / 2, width: imageSize, height: imageSize)
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         
-        label.frame = CGRect(x: 30 + Int(iconContainer.frame.size.width),
-                             y: 0,
-                             width: Int(contentView.frame.size.width - 30 - iconContainer.frame.size.width),
-                             height: Int(contentView.frame.size.height))
-                             
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        iconImageView.image = nil
-        label.text = nil
-        iconContainer.backgroundColor = nil
+        nameLabel.frame = CGRect(x: 30 + Int(profileImageView.frame.size.width),
+                                 y: Int(contentView.frame.size.height) / 4,
+                                 width: Int(contentView.frame.size.width - 30 - profileImageView.frame.size.width),
+                                 height: Int(contentView.frame.size.height) / 2)
+        nameLabel.sizeToFit()
+
+        
+        emailLabel.frame = CGRect(x: 30 + Int(profileImageView.frame.size.width),
+                                  y: Int(contentView.frame.size.height) / 4 + Int(nameLabel.frame.size.height),
+                                  width: Int(contentView.frame.size.width - 30 - profileImageView.frame.size.width),
+                                  height: Int(contentView.frame.size.height) / 2)
+        emailLabel.sizeToFit()
+        
     }
     
     func configure(with model: ProfileHeaderModel) {
-        //label.text = model.title
-        iconImageView.image = model.image
-        //iconContainer.backgroundColor = model.imageBackGroundColor
+        profileImageView.image = model.image
+        nameLabel.text = model.name
+        emailLabel.text = model.email
     }
     
 }

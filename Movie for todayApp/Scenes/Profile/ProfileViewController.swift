@@ -11,18 +11,20 @@ protocol ProfileDisplayLogic: AnyObject {
     func displayProfile()
 }
 // MARK: - Profile Model
-// Profile top image section
+// Profile top image section model
 struct ProfileHeaderModel {
     let image: UIImage?
+    let name: String
+    let email: String
     let handler: (() -> Void)
 }
-// Profile settings menu items section
+// Profile settings menu items section model
 struct ProfileSettingsItemModel {
     let title: String
     let image: UIImage?
     let handler: (() -> Void)
 }
-// Logout section
+// Logout section model
 struct ProfileLogOutModel {
     let title: String
     let handler: (() -> Void)
@@ -86,11 +88,11 @@ extension ProfileViewController {
         tableView.backgroundColor = .primaryDark
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ProfileHeaderCell.self,
-                                   forCellReuseIdentifier: ProfileHeaderCell.identifier)
+                           forCellReuseIdentifier: ProfileHeaderCell.identifier)
         tableView.register(ProfileSettingsItemCell.self,
-                                   forCellReuseIdentifier: ProfileSettingsItemCell.identifier)
+                           forCellReuseIdentifier: ProfileSettingsItemCell.identifier)
         tableView.register(ProfileLogOutCell.self,
-                                   forCellReuseIdentifier: ProfileLogOutCell.identifier)
+                           forCellReuseIdentifier: ProfileLogOutCell.identifier)
         return tableView
     }
     // MARK: - UI methods
@@ -103,7 +105,7 @@ extension ProfileViewController {
     private func configureModel() {
         // Header section
         let header: ProfileHeaderModel =
-            .init(image: UIImage(systemName: "plane")) {
+            .init(image: UIImage(named: "ProfileImageSet/notification"), name: "Tiffany", email: "Tiffany007@gmail.com") {
                 print("Header")
             }
         // Settings section items
@@ -131,14 +133,14 @@ extension ProfileViewController {
             }
         // Log out section
         let logOut: ProfileLogOutModel =
-            .init(title: "LogOut") {
-                print("LogOut")
+            .init(title: "Log Out") {
+                print("Log Out")
             }
-        
+        // Configure sections
         // Header
-//        self.models.append(.init(title: nil, options: [
-//            .header(model: header)
-//        ]))
+        self.models.append(.init(title: nil, options: [
+            .header(model: header)
+        ]))
         // General
         self.models.append(.init(title: "General", options: [
             .settingsMenuItem(model: notification),
@@ -150,10 +152,9 @@ extension ProfileViewController {
             .settingsMenuItem(model: aboutUs)
         ]))
         // LogOut
-//        self.models.append(.init(title: nil, options: [
-//            .logout(model: logOut)
-//        ]))
-        //
+        self.models.append(.init(title: nil, options: [
+            .logout(model: logOut)
+        ]))
     }
     
     private func setupView() {
@@ -166,15 +167,16 @@ extension ProfileViewController {
     // MARK: - Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10.0),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10.0),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
-// MARK: - TableView data source
+// MARK: - TableView
 extension ProfileViewController: UITableViewDataSource {
+    // Default settings
     func numberOfSections(in tableView: UITableView) -> Int {
         models.count
     }
@@ -187,7 +189,7 @@ extension ProfileViewController: UITableViewDataSource {
         let section = models[section]
         return section.title
     }
-    
+    // Choose custom UITableViewCell type depending on the model
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
         switch model.self {
@@ -220,7 +222,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
     }
-    
+    // Cells custom handlers
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let type = models[indexPath.section].options[indexPath.row]
@@ -233,66 +235,82 @@ extension ProfileViewController: UITableViewDataSource {
             model.handler()
         }
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let cornerRadius: CGFloat = 0.0
-//              cell.backgroundColor = UIColor.clear
-//              let layer: CAShapeLayer = CAShapeLayer()
-//              let pathRef: CGMutablePath = CGMutablePath()
-//              //dx leading an trailing margins
-//              let bounds: CGRect = cell.bounds.insetBy(dx: 0, dy: 0)
-//              var addLine: Bool = false
-//              
-//              if indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-//                  pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
-//              } else if indexPath.row == 0 {
-//                  pathRef.move(to: CGPoint(x: bounds.minX, y: bounds.maxY))
-//                  pathRef.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.minY),
-//                                 tangent2End: CGPoint(x: bounds.midX, y: bounds.minY),
-//                                 radius: cornerRadius)
-//                  
-//                  pathRef.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.minY),
-//                                 tangent2End: CGPoint(x: bounds.maxX, y: bounds.midY),
-//                                 radius: cornerRadius)
-//                  pathRef.addLine(to: CGPoint(x: bounds.maxX, y: bounds.maxY))
-//                  addLine = true
-//              } else if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-//                  pathRef.move(to: CGPoint(x: bounds.minX, y: bounds.minY))
-//                  pathRef.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.maxY),
-//                                 tangent2End: CGPoint(x: bounds.midX, y: bounds.maxY),
-//                                 radius: cornerRadius)
-//                  
-//                  pathRef.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.maxY),
-//                                 tangent2End: CGPoint(x: bounds.maxX, y: bounds.midY),
-//                                 radius: cornerRadius)
-//                  pathRef.addLine(to: CGPoint(x: bounds.maxX, y: bounds.minY))
-//              } else {
-//                  pathRef.addRect(bounds)
-//                  addLine = true
-//              }
-//              
-//              layer.path = pathRef
-//              layer.strokeColor = UIColor.lightGray.cgColor
-//              layer.lineWidth = 0.5
-//              layer.fillColor = UIColor.white.cgColor
-//              
-//              if addLine == true {
-//                  let lineLayer: CALayer = CALayer()
-//                  let lineHeight: CGFloat = (1 / UIScreen.main.scale)
-//                  lineLayer.frame = CGRect(x: bounds.minX, y: bounds.size.height - lineHeight, width: bounds.size.width, height: lineHeight)
-//                  lineLayer.backgroundColor = UIColor.clear.cgColor
-//                  layer.addSublayer(lineLayer)
-//              }
-//              
-//              let backgroundView: UIView = UIView(frame: bounds)
-//              backgroundView.layer.insertSublayer(layer, at: 0)
-//              backgroundView.backgroundColor = .white
-//              cell.backgroundView = backgroundView
-//    }
+    // MARK: - TableView sections appearance
+    // Set custom cell height
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let type = models[indexPath.section].options[indexPath.row]
+        switch type.self {
+        case .header:
+            return 80.0
+        default:
+            return tableView.rowHeight
+        }
+    }
+    // Section merge borders
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cornerRadius: CGFloat = 0.0
+        cell.backgroundColor = UIColor.clear
+        let layer: CAShapeLayer = CAShapeLayer()
+        let pathRef: CGMutablePath = CGMutablePath()
+        //dx leading an trailing margins
+        let bounds: CGRect = cell.bounds.insetBy(dx: 0, dy: 0)
+        var addLine: Bool = false
+        
+        if indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
+        } else if indexPath.row == 0 {
+            pathRef.move(to: CGPoint(x: bounds.minX, y: bounds.maxY))
+            pathRef.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.minY),
+                           tangent2End: CGPoint(x: bounds.midX, y: bounds.minY),
+                           radius: cornerRadius)
+            
+            pathRef.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.minY),
+                           tangent2End: CGPoint(x: bounds.maxX, y: bounds.midY),
+                           radius: cornerRadius)
+            pathRef.addLine(to: CGPoint(x: bounds.maxX, y: bounds.maxY))
+            addLine = true
+        } else if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            pathRef.move(to: CGPoint(x: bounds.minX, y: bounds.minY))
+            pathRef.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.maxY),
+                           tangent2End: CGPoint(x: bounds.midX, y: bounds.maxY),
+                           radius: cornerRadius)
+            
+            pathRef.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.maxY),
+                           tangent2End: CGPoint(x: bounds.maxX, y: bounds.midY),
+                           radius: cornerRadius)
+            pathRef.addLine(to: CGPoint(x: bounds.maxX, y: bounds.minY))
+        } else {
+            pathRef.addRect(bounds)
+            addLine = true
+        }
+        
+        layer.path = pathRef
+        layer.strokeColor = UIColor.lightGray.cgColor
+        layer.lineWidth = 0.5
+        if let _ = cell as? ProfileLogOutCell {
+            layer.fillColor = #colorLiteral(red: 0.3127486737, green: 0, blue: 0.09362361296, alpha: 0.1648082386)
+        } else {
+            layer.fillColor = UIColor.primaryDark.cgColor
+        }
+        
+        if addLine == true {
+            let lineLayer: CALayer = CALayer()
+            let lineHeight: CGFloat = 0.2
+            lineLayer.frame = CGRect(x: bounds.minX + 20, y: bounds.size.height - lineHeight, width: bounds.size.width - 40, height: lineHeight)
+            lineLayer.backgroundColor = UIColor.lightGray.cgColor
+            layer.addSublayer(lineLayer)
+        }
+        
+        let backgroundView: UIView = UIView(frame: bounds)
+        backgroundView.layer.insertSublayer(layer, at: 0)
+        backgroundView.backgroundColor = .primaryDark
+        cell.backgroundView = backgroundView
+    }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.font = .montserratSemiBold16()
+        header.textLabel?.font = .montserratSemiBold18()
         header.textLabel?.textColor = .textColorWhite
+        header.textLabel?.text = header.textLabel?.text?.capitalized
     }
 }

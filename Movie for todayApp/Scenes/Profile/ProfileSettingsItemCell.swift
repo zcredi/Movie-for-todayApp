@@ -4,7 +4,6 @@
 //
 //  Created by Andrei Shpartou on 27/12/2023.
 //
-
 import UIKit
 
 class ProfileSettingsItemCell: UITableViewCell {
@@ -25,10 +24,7 @@ class ProfileSettingsItemCell: UITableViewCell {
         return imageView
     }()
     
-    private lazy var label: UILabel = {
-        let label = UILabel(text: "", font: .montserratMedium12(), textColor: .textColorWhite)
-        return label
-    }()
+    private lazy var label: UILabel = { UILabel(text: "", font: .montserratMedium12(), textColor: .textColorWhite) }()
     
     private lazy var accessoryImageView: UIImageView = { UIImageView(image: UIImage(named: "ProfileImageSet/arrow")) }()
     
@@ -39,6 +35,7 @@ class ProfileSettingsItemCell: UITableViewCell {
         iconContainer.addSubview(iconImageView)
         contentView.addSubview(label)
         accessoryView = accessoryImageView
+        contentView.layer.cornerRadius = contentView.frame.height / 5
         contentView.clipsToBounds = true
     }
     
@@ -48,19 +45,17 @@ class ProfileSettingsItemCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         let size = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 15, y: 6, width: size, height: size)
+        iconContainer.frame = CGRect(x: 20, y: 6, width: size, height: size)
         
         let imageSize = size / 1.5
         iconImageView.frame = CGRect(x: (size - imageSize) / 2, y: (size - imageSize) / 2, width: imageSize, height: imageSize)
         
-        label.frame = CGRect(x: 30 + Int(iconContainer.frame.size.width),
+        label.frame = CGRect(x: 40 + Int(iconContainer.frame.size.width),
                              y: 0,
-                             width: Int(contentView.frame.size.width - 30 - iconContainer.frame.size.width),
+                             width: Int(contentView.frame.size.width - iconContainer.frame.size.width),
                              height: Int(contentView.frame.size.height))
-        
-        
-                             
     }
     
     override func prepareForReuse() {
