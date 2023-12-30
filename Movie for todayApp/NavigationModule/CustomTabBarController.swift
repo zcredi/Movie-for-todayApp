@@ -45,16 +45,22 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupViewControllers() {
-        let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        let searchViewController = UIViewController()
+        let homeViewController = HomeViewController()
+        let searchViewController = SearchViewController()
+        //TODO: Change tree VC to actual VC
         let treeViewController = UIViewController()
-        let profileViewController = UIViewController()
+        let profileViewController = ProfileViewController()
         
         searchViewController.view.backgroundColor = .gray
         treeViewController.view.backgroundColor = .cyan
         profileViewController.view.backgroundColor = .blue
         
-        viewControllers = [homeViewController, searchViewController, treeViewController, profileViewController]
+        let homeNavigationController = CustomNavigationController(rootViewController: homeViewController)
+        let searchNavigationController = CustomNavigationController(rootViewController: searchViewController)
+        let treeNavigationController = CustomNavigationController(rootViewController: treeViewController)
+        let profileNavigationController = CustomNavigationController(rootViewController: profileViewController)
+        
+        viewControllers = [homeNavigationController, searchNavigationController, treeNavigationController, profileNavigationController]
     }
     
     func setupCustomTabBar() {
