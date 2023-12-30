@@ -105,31 +105,31 @@ extension ProfileViewController {
     private func configureModel() {
         // Header section
         let header: ProfileHeaderModel =
-            .init(image: UIImage(named: "ProfileImageSet/notification"), name: "Tiffany", email: "Tiffany007@gmail.com") {
-                print("Header")
+            .init(image: UIImage(named: "ProfileImageSet/avatar"), name: "Tiffany", email: "Tiffany007@gmail.com") {
+                print ("Pass to Edit Profile screen")
             }
         // Settings section items
         // General
         let notification: ProfileSettingsItemModel =
             .init(title: "Notification",
                   image: UIImage(named: "ProfileImageSet/notification")) {
-                print("Notification cell tapped")
+                print("Notification")
             }
         let language: ProfileSettingsItemModel =
             .init(title: "Language",
                   image: UIImage(named: "ProfileImageSet/globe")) {
-                print("Language cell tapped")
+                print("Language")
             }
         // More
         let legalAndPolicies: ProfileSettingsItemModel =
             .init(title: "Legal and Policies",
                   image: UIImage(named: "ProfileImageSet/shield")) {
-                print("Legal and Policies cell tapped")
+                print("Legal and Policies")
             }
         let aboutUs: ProfileSettingsItemModel =
             .init(title: "About Us",
                   image: UIImage(named: "ProfileImageSet/alert")) {
-                print("About Us cell tapped")
+                print("About Us cell")
             }
         // Log out section
         let logOut: ProfileLogOutModel =
@@ -229,8 +229,8 @@ extension ProfileViewController: UITableViewDataSource {
         switch type.self {
         case .header(let model):
             model.handler()
-        case .settingsMenuItem:
-            return
+        case .settingsMenuItem(let model):
+            model.handler()
         case .logout(let model):
             model.handler()
         }
@@ -241,7 +241,7 @@ extension ProfileViewController: UITableViewDataSource {
         let type = models[indexPath.section].options[indexPath.row]
         switch type.self {
         case .header:
-            return 80.0
+            return 100.0
         default:
             return tableView.rowHeight
         }

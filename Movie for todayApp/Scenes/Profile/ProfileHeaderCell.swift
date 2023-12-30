@@ -11,9 +11,8 @@ class ProfileHeaderCell: UITableViewCell {
     
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .white
-        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -21,13 +20,15 @@ class ProfileHeaderCell: UITableViewCell {
     
     private lazy var emailLabel: UILabel = { UILabel(text: "", font: .montserratRegular10(), textColor: .textColorDarkGrey) }()
     
+    private lazy var accessoryImageView: UIImageView = { UIImageView(image: UIImage(named: "ProfileImageSet/edit")) }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(profileImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(emailLabel)
         contentView.clipsToBounds = true
-        accessoryType = .disclosureIndicator
+        accessoryView = accessoryImageView
     }
     
     required init?(coder: NSCoder) {
@@ -38,21 +39,20 @@ class ProfileHeaderCell: UITableViewCell {
         super.layoutSubviews()
         
         let size = contentView.frame.size.height
-        
         let imageSize = size / 1.5
-        profileImageView.frame = CGRect(x: (size - imageSize) / 2, y: (size - imageSize) / 2, width: imageSize, height: imageSize)
+        profileImageView.frame = CGRect(x: 10, y: (size - imageSize) / 2, width: imageSize, height: imageSize)
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         
-        nameLabel.frame = CGRect(x: 30 + Int(profileImageView.frame.size.width),
+        nameLabel.frame = CGRect(x: 25 + Int(profileImageView.frame.size.width),
                                  y: Int(contentView.frame.size.height) / 4,
-                                 width: Int(contentView.frame.size.width - 30 - profileImageView.frame.size.width),
+                                 width: Int(contentView.frame.size.width - 25 - profileImageView.frame.size.width),
                                  height: Int(contentView.frame.size.height) / 2)
         nameLabel.sizeToFit()
 
         
-        emailLabel.frame = CGRect(x: 30 + Int(profileImageView.frame.size.width),
-                                  y: Int(contentView.frame.size.height) / 4 + Int(nameLabel.frame.size.height),
-                                  width: Int(contentView.frame.size.width - 30 - profileImageView.frame.size.width),
+        emailLabel.frame = CGRect(x: 25 + Int(profileImageView.frame.size.width),
+                                  y: Int(contentView.frame.size.height) / 4 + Int(nameLabel.frame.size.height) + 5,
+                                  width: Int(contentView.frame.size.width - 25 - profileImageView.frame.size.width),
                                   height: Int(contentView.frame.size.height) / 2)
         emailLabel.sizeToFit()
         

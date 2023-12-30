@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C329A602B3C0EA400BE29DD /* ProfileSettingsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C329A5F2B3C0EA400BE29DD /* ProfileSettingsItemCell.swift */; };
+		6C329A622B3C703600BE29DD /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C329A612B3C703600BE29DD /* ProfileHeaderCell.swift */; };
+		6C329A642B3C706F00BE29DD /* ProfileLogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C329A632B3C706F00BE29DD /* ProfileLogOutCell.swift */; };
+		6C59970B2B3AFF62003B9878 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5997092B3AFF62003B9878 /* ProfileInteractor.swift */; };
+		6C59970C2B3AFF62003B9878 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59970A2B3AFF62003B9878 /* ProfilePresenter.swift */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF32B39FF14000458BD /* PopularViewController.swift */; };
 		86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF52B39FF22000458BD /* MovieListViewController.swift */; };
@@ -31,6 +36,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C329A5F2B3C0EA400BE29DD /* ProfileSettingsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsItemCell.swift; sourceTree = "<group>"; };
+		6C329A612B3C703600BE29DD /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
+		6C329A632B3C706F00BE29DD /* ProfileLogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogOutCell.swift; sourceTree = "<group>"; };
+		6C5997092B3AFF62003B9878 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		6C59970A2B3AFF62003B9878 /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF32B39FF14000458BD /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		86157FF52B39FF22000458BD /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +198,12 @@
 		868166DD2B398153007FDF8F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				6C5997092B3AFF62003B9878 /* ProfileInteractor.swift */,
+				6C59970A2B3AFF62003B9878 /* ProfilePresenter.swift */,
 				86157FFB2B39FF3E000458BD /* ProfileViewController.swift */,
+				6C329A612B3C703600BE29DD /* ProfileHeaderCell.swift */,
+				6C329A5F2B3C0EA400BE29DD /* ProfileSettingsItemCell.swift */,
+				6C329A632B3C706F00BE29DD /* ProfileLogOutCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -313,8 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C329A642B3C706F00BE29DD /* ProfileLogOutCell.swift in Sources */,
+				6C329A602B3C0EA400BE29DD /* ProfileSettingsItemCell.swift in Sources */,
 				868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */,
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
+				6C59970B2B3AFF62003B9878 /* ProfileInteractor.swift in Sources */,
 				86778CDC2B3AE07800E548F1 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
 				86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */,
@@ -326,6 +344,8 @@
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
 				86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */,
+				6C59970C2B3AFF62003B9878 /* ProfilePresenter.swift in Sources */,
+				6C329A622B3C703600BE29DD /* ProfileHeaderCell.swift in Sources */,
 				86157FFA2B39FF35000458BD /* DetailViewController.swift in Sources */,
 				868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */,
 				86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */,
