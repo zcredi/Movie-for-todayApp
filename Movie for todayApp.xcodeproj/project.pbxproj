@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CCDD12D2B40332800FC2196 /* RecentMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD12C2B40332800FC2196 /* RecentMovieCell.swift */; };
+		2CCDD12F2B4033C700FC2196 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD12E2B4033C700FC2196 /* SearchInteractor.swift */; };
+		2CCDD1312B4033E400FC2196 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD1302B4033E400FC2196 /* SearchPresenter.swift */; };
 		3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC42B3F817100636EFE /* CustomNavigationController.swift */; };
 		4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */; };
 		4094C94B2B3DE06B0067F5D1 /* UIView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CCDD12C2B40332800FC2196 /* RecentMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMovieCell.swift; sourceTree = "<group>"; };
+		2CCDD12E2B4033C700FC2196 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		2CCDD1302B4033E400FC2196 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		3700DCC42B3F817100636EFE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopularCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+App.swift"; sourceTree = "<group>"; };
@@ -87,6 +93,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CCDD1282B4031C200FC2196 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CCDD1292B4031CB00FC2196 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDD12E2B4033C700FC2196 /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		2CCDD12A2B4031D300FC2196 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDD1302B4033E400FC2196 /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2CCDD12B2B40330C00FC2196 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDD12C2B40332800FC2196 /* RecentMovieCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4094C9452B3DDF800067F5D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +275,10 @@
 		868166DB2B398153007FDF8F /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				2CCDD12B2B40330C00FC2196 /* Cell */,
+				2CCDD12A2B4031D300FC2196 /* Presenter */,
+				2CCDD1292B4031CB00FC2196 /* Interactor */,
+				2CCDD1282B4031C200FC2196 /* View */,
 				86157FF72B39FF2E000458BD /* SearchViewController.swift */,
 			);
 			path = Search;
@@ -383,13 +424,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCDD1312B4033E400FC2196 /* SearchPresenter.swift in Sources */,
 				4094C9752B3E08260067F5D1 /* HomeCategoryTagCollectionViewCell.swift in Sources */,
 				868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */,
 				4094C9772B3E14DB0067F5D1 /* HomeMostPopularCollectionViewCell.swift in Sources */,
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
 				86778CDC2B3AE07800E548F1 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
+				2CCDD12F2B4033C700FC2196 /* SearchInteractor.swift in Sources */,
 				4094C97D2B3F4A670067F5D1 /* HomeNavigationBar.swift in Sources */,
+				2CCDD12D2B40332800FC2196 /* RecentMovieCell.swift in Sources */,
 				86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */,
 				861580002B39FF58000458BD /* WishlistViewController.swift in Sources */,
 				86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */,
