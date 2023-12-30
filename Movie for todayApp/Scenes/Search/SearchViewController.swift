@@ -41,6 +41,7 @@ class SearchViewController: UIViewController {
             recent.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             recent.widthAnchor.constraint(equalToConstant: 360),
             recent.heightAnchor.constraint(equalToConstant: 310),
+            
             recentMovieCell.topAnchor.constraint(equalTo: view.topAnchor,constant: 340),
             recentMovieCell.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             recentMovieCell.widthAnchor.constraint(equalToConstant: 360),

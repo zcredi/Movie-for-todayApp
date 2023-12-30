@@ -9,7 +9,7 @@ import UIKit
 
 class RecentMovieCell: UICollectionViewCell {
     
-   static let identifier = "RecentMovieCell"
+    static let identifier = "\(RecentMovieCell.self)"
     
     // MARK: - UI
     let movieImage: UIImageView = {
@@ -19,23 +19,7 @@ class RecentMovieCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 10
         return imageView
     }()
-    
-    let starImage: UIImageView = {
-        let ratingView = UIImageView()
-        ratingView.image = UIImage(systemName: "star.fill")
-        ratingView.tintColor = .yellow
-        ratingView.contentMode = .scaleAspectFit
-        return ratingView
-    }()
-    
-    let ratingNumber: UILabel = {
-        var rating = UILabel()
-        rating.text = "0.0"
-        rating.textAlignment = .right
-        rating.numberOfLines = 1
-        return rating
-    }()
-    
+        
     let movieName: UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = .montserratSemiBold14()
@@ -57,24 +41,21 @@ class RecentMovieCell: UICollectionViewCell {
         container.axis = .vertical
         container.backgroundColor = UIColor(named: "primarySoft")
         container.spacing = 8
-        
         return container
     }()
-    let ratingContainer: UIStackView = {
-        let container = UIStackView ()
-        container.backgroundColor = UIColor(named: "primarySoft")
-        container.layer.cornerRadius = 15
-        container.axis = .horizontal
-        container.spacing = 4
-        
-        return container
+    private lazy var ratingBlur: VisualBlurEffect = {
+        let blur = VisualBlurEffect(style: .systemUltraThinMaterialDark)
+        blur.layer.cornerRadius = 12
+        blur.clipsToBounds = true
+        return blur
     }()
     
+    private lazy var ratingImage = UIImageView(image: UIImage(systemName: "star.fill")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal))
+    private lazy var ratingLabel = UILabel(text: "4.5", font: .systemFont(ofSize: 12), textColor: .systemOrange)
     
     // MARK: - LifeCycle
     override init(frame:CGRect) {
         super.init(frame: frame)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -85,31 +66,37 @@ class RecentMovieCell: UICollectionViewCell {
     func setupContainers () {
         descriptionContainer.addSubview (genre)
         descriptionContainer.addSubview(movieName)
-        ratingContainer.addSubview(ratingNumber)
-        ratingContainer.addSubview(starImage)
     }
     
-     func setupView() {
-         [ratingContainer, descriptionContainer, movieImage].forEach {
+    func setupView() {
+        [ratingBlur,ratingImage,ratingLabel,descriptionContainer,movieImage].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
-     }
-        
+    }
+    
     func setupConstraints () {
-                NSLayoutConstraint.activate ([
-                     movieImage.topAnchor.constraint(equalTo: self.topAnchor),
-                     movieImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                     movieImage.heightAnchor.constraint(equalToConstant: 178),
-                     movieImage.widthAnchor.constraint(equalToConstant: 135),
-                     
-                     descriptionContainer.topAnchor.constraint(equalTo: movieImage.bottomAnchor, constant: -40),
-                     descriptionContainer.leadingAnchor.constraint(equalTo: movieImage.leadingAnchor),
-                     
-                     ratingContainer.topAnchor.constraint(equalTo: movieImage.topAnchor, constant: -8),
-                     ratingContainer.trailingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: -8),
-                     ratingContainer.widthAnchor.constraint(equalToConstant: 55 ),
-                     ratingContainer.heightAnchor.constraint(equalToConstant: 25)
-                    ])
+        NSLayoutConstraint.activate ([
+            movieImage.topAnchor.constraint(equalTo: self.topAnchor),
+            movieImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            movieImage.heightAnchor.constraint(equalToConstant: 178),
+            movieImage.widthAnchor.constraint(equalToConstant: 135),
+            
+            descriptionContainer.topAnchor.constraint(equalTo: movieImage.bottomAnchor, constant: -40),
+            descriptionContainer.leadingAnchor.constraint(equalTo: movieImage.leadingAnchor),
+            
+            ratingBlur.heightAnchor.constraint(equalToConstant: 30),
+            ratingBlur.widthAnchor.constraint(equalToConstant: 55),
+            ratingBlur.topAnchor.constraint(equalTo: movieImage.topAnchor, constant: 8),
+            ratingBlur.trailingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: -8),
+            
+            ratingImage.heightAnchor.constraint(equalToConstant: 16),
+            ratingImage.widthAnchor.constraint(equalToConstant: 16),
+            ratingImage.centerYAnchor.constraint(equalTo: ratingBlur.centerYAnchor),
+            ratingImage.leadingAnchor.constraint(equalTo: ratingBlur.leadingAnchor, constant: 8),
+            
+            ratingLabel.centerYAnchor.constraint(equalTo: ratingBlur.centerYAnchor),
+            ratingLabel.trailingAnchor.constraint(equalTo: ratingBlur.trailingAnchor, constant: -8)
+        ])
     }
 }
