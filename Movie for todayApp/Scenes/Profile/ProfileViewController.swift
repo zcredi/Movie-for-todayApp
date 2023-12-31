@@ -40,7 +40,7 @@ struct ProfileSection {
     let options: [ProfileDetailsType]
 }
 // MARK: - Profile View Controller
-class ProfileViewController: UIViewController, UITableViewDelegate {
+class ProfileViewController: UIViewController {
     // UI components
     private lazy var tableView = createTableView()
     // Internal vars
@@ -52,7 +52,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setupVC()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupVC()
@@ -124,6 +123,7 @@ extension ProfileViewController {
         let legalAndPolicies: ProfileSettingsItemModel =
             .init(title: "Legal and Policies",
                   image: UIImage(named: "ProfileImageSet/shield")) {
+                self.navigationController?.pushViewController(PolicyViewController(), animated: true)
                 print("Legal and Policies")
             }
         let aboutUs: ProfileSettingsItemModel =
@@ -175,7 +175,7 @@ extension ProfileViewController {
     }
 }
 // MARK: - TableView
-extension ProfileViewController: UITableViewDataSource {
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     // Default settings
     func numberOfSections(in tableView: UITableView) -> Int {
         models.count
