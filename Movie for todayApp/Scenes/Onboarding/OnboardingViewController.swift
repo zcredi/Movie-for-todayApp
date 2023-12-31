@@ -28,7 +28,7 @@ class OnboardingViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.delegate = self
         collection.dataSource = self
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: String(describing: UICollectionViewCell.self))
+        collection.register(SliderCell.self, forCellWithReuseIdentifier: String(describing: SliderCell.self))
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.isPagingEnabled = true
 //        collection.showsHorizontalScrollIndicator = false
@@ -63,9 +63,16 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UICollectionViewCell.self), for: indexPath)
-        cell.contentView.backgroundColor = sliderData[indexPath.item].color
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SliderCell.self), for: indexPath) as? SliderCell {
+            cell.contentView.backgroundColor = sliderData[indexPath.item].color
+            cell.titleLabel.text = sliderData[indexPath.item].title
+            cell.textLabel.text = sliderData[indexPath.item].text
+            
+            
+            return cell
+        }
+        
+        return UICollectionViewCell()
     }
     
     

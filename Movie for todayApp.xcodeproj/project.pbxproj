@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3700DCC72B3F952000636EFE /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC62B3F952000636EFE /* SliderCell.swift */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF32B39FF14000458BD /* PopularViewController.swift */; };
 		86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF52B39FF22000458BD /* MovieListViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3700DCC62B3F952000636EFE /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF32B39FF14000458BD /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		86157FF52B39FF22000458BD /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				86157FFD2B39FF4B000458BD /* OnboardingViewController.swift */,
+				3700DCC62B3F952000636EFE /* SliderCell.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
 				86778CDC2B3AE07800E548F1 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
+				3700DCC72B3F952000636EFE /* SliderCell.swift in Sources */,
 				86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */,
 				861580002B39FF58000458BD /* WishlistViewController.swift in Sources */,
 				86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */,
