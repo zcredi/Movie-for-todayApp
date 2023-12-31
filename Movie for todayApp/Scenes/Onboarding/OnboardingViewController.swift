@@ -11,9 +11,9 @@ class OnboardingViewController: UIViewController {
     
     private let sliderData: [SliderItem] = [
     
-        SliderItem(color: .brown, title: "Slide 1", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: ""),
-        SliderItem(color: .orange, title: "Slide 2", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: ""),
-        SliderItem(color: .green, title: "Slide 3", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "")
+        SliderItem(color: .brown, title: "Slide 1", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "Animation 1"),
+        SliderItem(color: .orange, title: "Slide 2", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "Animation 2"),
+        SliderItem(color: .green, title: "Slide 3", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "Animation 3")
     
     ]
     
@@ -67,7 +67,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.contentView.backgroundColor = sliderData[indexPath.item].color
             cell.titleLabel.text = sliderData[indexPath.item].title
             cell.textLabel.text = sliderData[indexPath.item].text
-            
+            cell.animationSetup(animationName: sliderData[indexPath.item].animationName)
             
             return cell
         }

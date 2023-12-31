@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Lottie
 
 class SliderCell: UICollectionViewCell {
     
     var titleLabel = UILabel()
     var textLabel = UILabel()
+    private let lottieView = LottieAnimationView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,6 +50,27 @@ class SliderCell: UICollectionViewCell {
             textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
         
         ])
+    }
+    
+    func animationSetup(animationName: String) {
+        contentView.addSubview(lottieView)
+        
+        lottieView.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.animation = LottieAnimation.named(animationName)
+        lottieView.loopMode = .loop
+        lottieView.contentMode = .scaleAspectFill
+        lottieView.configuration.renderingEngine = .mainThread
+        
+        NSLayoutConstraint.activate([
+        
+            lottieView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            lottieView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            lottieView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            lottieView.heightAnchor.constraint(equalToConstant: 300),
+            
+        ])
+        
+        lottieView.play()
     }
     
 }
