@@ -136,8 +136,7 @@ class OnboardingViewController: UIViewController {
             pager.translatesAutoresizingMaskIntoConstraints = false
             pager.backgroundColor = .white
             
-//            pager.widthAnchor.constraint(equalToConstant: 10).isActive = true
-//            pager.heightAnchor.constraint(equalToConstant: 10).isActive = true
+            pager.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scrollToSlide(sender: ))))
             
             pager.layer.cornerRadius = 5
             self.pagers.append(pager)
@@ -173,6 +172,14 @@ class OnboardingViewController: UIViewController {
     
     @objc func nextSlide() {
         
+    }
+    
+    @objc func scrollToSlide(sender: UIGestureRecognizer) {
+        if let index = sender.view?.tag {
+            onboardingCollectionView.scrollToItem(at: IndexPath(item: index - 1, section: 0), at: .centeredHorizontally, animated: true)
+            
+            currentSlide = index - 1
+        }
     }
     
 }
