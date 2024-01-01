@@ -25,6 +25,7 @@ class SliderCell: UICollectionViewCell {
     
     // make convenience Labels
     private func setSlide() {
+        contentView.addSubview(lottieView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(textLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -40,37 +41,31 @@ class SliderCell: UICollectionViewCell {
         textLabel.font = UIFont.systemFont(ofSize: 16)
         
         NSLayoutConstraint.activate([
-        
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            titleLabel.topAnchor.constraint(equalTo: lottieView.bottomAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-        
         ])
     }
     
     func animationSetup(animationName: String) {
-        contentView.addSubview(lottieView)
-        
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         lottieView.animation = LottieAnimation.named(animationName)
         lottieView.loopMode = .loop
-        lottieView.contentMode = .scaleAspectFill
+        lottieView.contentMode = .scaleAspectFit
         lottieView.configuration.renderingEngine = .mainThread
+        lottieView.backgroundColor = UIColor.primaryDark
         
         NSLayoutConstraint.activate([
-        
-            lottieView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            lottieView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
             lottieView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             lottieView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            lottieView.heightAnchor.constraint(equalToConstant: 300),
-            
+            lottieView.heightAnchor.constraint(equalToConstant: contentView.bounds.height * 0.5),
         ])
         
         lottieView.play()
     }
-    
 }
