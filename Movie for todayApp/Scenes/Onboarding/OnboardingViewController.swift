@@ -171,7 +171,12 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc func nextSlide() {
+        let maxSlide = sliderData.count
         
+        if currentSlide < maxSlide - 1 {
+            currentSlide += 1
+            onboardingCollectionView.scrollToItem(at: IndexPath(item: currentSlide, section: 0), at: .centeredHorizontally, animated: true)
+        }
     }
     
     @objc func scrollToSlide(sender: UIGestureRecognizer) {
@@ -225,6 +230,10 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             
             
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // try this for custom pager scroll
     }
     
 }
