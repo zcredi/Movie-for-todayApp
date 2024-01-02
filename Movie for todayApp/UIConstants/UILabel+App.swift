@@ -10,6 +10,7 @@ import UIKit
 extension UILabel {
     convenience init(text: String = "") {
         self.init()
+        self.numberOfLines = 0
         self.text = text
         self.font = .montserratRegular14()
         self.textColor = .primaryDark
