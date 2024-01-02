@@ -41,16 +41,16 @@ class OnboardingViewController: UIViewController {
     private var widthAncor: NSLayoutConstraint?
     
     lazy var skipButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Skip", for: .normal)
         button.setTitleColor(UIColor.textColorWhite, for: .normal)
         button.titleLabel?.font = UIFont.montserratRegular14()
-//        button.translatesAutoresizingMaskIntoConstraints = false
+        //        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     lazy var vStack: UIStackView = {
-       let stack = UIStackView()
+        let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .leading
         stack.spacing = 5
@@ -61,13 +61,18 @@ class OnboardingViewController: UIViewController {
     
     lazy var hStack: UIStackView = {
         let stack = UIStackView()
-         stack.axis = .horizontal
-         stack.alignment = .center
-         stack.spacing = 0
-         stack.distribution = .equalSpacing
-         stack.translatesAutoresizingMaskIntoConstraints = false
-         return stack
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 0
+        stack.distribution = .equalSpacing
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
+    
+    private let shape = CAShapeLayer()
+    
+    private var currentPageIndex: CGFloat = 0
+    private var fromValue: CGFloat = 0
     
     lazy var nextButton: UIView = {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(nextSlide))
@@ -79,7 +84,7 @@ class OnboardingViewController: UIViewController {
         nextImage.translatesAutoresizingMaskIntoConstraints = false
         nextImage.widthAnchor.constraint(equalToConstant: 25).isActive = true
         nextImage.heightAnchor.constraint(equalToConstant: 25).isActive = true
-       
+        
         let button = UIView()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -104,10 +109,10 @@ class OnboardingViewController: UIViewController {
         view.addSubview(safeAreaBackgroundView)
         
         NSLayoutConstraint.activate([
-        safeAreaBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-        safeAreaBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-        safeAreaBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        safeAreaBackgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+            safeAreaBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            safeAreaBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            safeAreaBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            safeAreaBackgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
     }
     
@@ -117,6 +122,32 @@ class OnboardingViewController: UIViewController {
         setStatusBar()
         
         setControl()
+        setShape()
+    }
+    
+    private func setShape() {
+        
+        currentPageIndex = CGFloat(1) / CGFloat(sliderData.count)
+        
+        let nextStroke = UIBezierPath(arcCenter: CGPoint(x: 30, y: 30), radius: 40, startAngle: -(.pi / 2), endAngle: 5, clockwise: true)
+        
+        let trackPath = CAShapeLayer()
+        trackPath.path = nextStroke.cgPath
+        trackPath.fillColor = UIColor.clear.cgColor
+        trackPath.lineWidth = 3
+        trackPath.strokeColor = UIColor.white.cgColor
+        trackPath.opacity = 0.1
+        nextButton.layer.addSublayer(trackPath)
+        
+        shape.path = nextStroke.cgPath
+        shape.fillColor = UIColor.clear.cgColor
+        shape.strokeColor = UIColor.primaryBlueAccent.cgColor
+        shape.lineWidth = 3
+        shape.lineCap = .round
+        shape.strokeStart = 0
+        shape.strokeEnd = 0
+        
+        nextButton.layer.addSublayer(shape)
     }
     
     private func setControl() {
@@ -131,7 +162,7 @@ class OnboardingViewController: UIViewController {
         pagerStack.translatesAutoresizingMaskIntoConstraints = false
         
         for tag in 1...sliderData.count {
-         let pager = UIView()
+            let pager = UIView()
             pager.tag = tag
             pager.translatesAutoresizingMaskIntoConstraints = false
             pager.backgroundColor = .white
@@ -150,13 +181,13 @@ class OnboardingViewController: UIViewController {
         hStack.addArrangedSubview(nextButton)
         
         NSLayoutConstraint.activate([
-        
+            
             hStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             hStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             hStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-        
+            
         ])
-
+        
     }
     
     private func setupCollectionView() {
@@ -227,9 +258,19 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             widthAncor?.isActive = true
             page.heightAnchor.constraint(equalToConstant: 10).isActive = true
             
-            
-            
         }
+        
+        let currentIndex = currentPageIndex * CGFloat(indexPath.item + 1)
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = fromValue
+        animation.toValue = currentIndex
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        animation.duration = 0.5
+        shape.add(animation, forKey: String(describing: animation))
+        
+        fromValue = currentIndex
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
