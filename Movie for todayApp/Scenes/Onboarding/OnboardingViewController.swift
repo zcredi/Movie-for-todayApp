@@ -7,13 +7,18 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
     
-    private let sliderData: [SliderItem] = [
-        SliderItem(title: "Slide 1", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "Animation 1"),
-        SliderItem(title: "Slide 2", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "Animation 2"),
-        SliderItem(title: "Slide 3", text: "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem semper parturient.", animationName: "Animation 3")
-    ]
+    //MARK: Variables & Dependencies
+    private var pagers: [UIView] = []
+    private var currentSlide = 0
+    private var widthAncor: NSLayoutConstraint?
+    private let shape = CAShapeLayer()
+    private var currentPageIndex: CGFloat = 0
+    private var fromValue: CGFloat = 0
+    
+    //MARK: UI Elements
+    let safeAreaBackgroundView = UIView()
     
     lazy var onboardingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,17 +39,12 @@ class OnboardingViewController: UIViewController {
         return collection
     }()
     
-    let safeAreaBackgroundView = UIView()
-    
-    private var pagers: [UIView] = []
-    private var currentSlide = 0
-    private var widthAncor: NSLayoutConstraint?
-    
     lazy var skipButton: UIButton = {
         let button = UIButton()
         button.setTitle("Skip", for: .normal)
         button.setTitleColor(UIColor.textColorWhite, for: .normal)
         button.titleLabel?.font = UIFont.montserratRegular14()
+        button.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -67,11 +67,6 @@ class OnboardingViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-    
-    private let shape = CAShapeLayer()
-    
-    private var currentPageIndex: CGFloat = 0
-    private var fromValue: CGFloat = 0
     
     lazy var nextButton: UIView = {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(nextSlide))
@@ -98,10 +93,20 @@ class OnboardingViewController: UIViewController {
         nextImage.centerXAnchor.constraint(equalTo: button.centerXAnchor).isActive = true
         nextImage.centerYAnchor.constraint(equalTo: button.centerYAnchor).isActive = true
         
-        
         return button
     }()
     
+    //MARK: Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupCollectionView()
+        setStatusBar()
+        
+        setControl()
+        setShape()
+    }
+    
+    //MARK: Private Methods
     private func setStatusBar() {
         safeAreaBackgroundView.backgroundColor = UIColor.primaryDark
         safeAreaBackgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,25 +120,15 @@ class OnboardingViewController: UIViewController {
         ])
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupCollectionView()
-        setStatusBar()
-        
-        setControl()
-        setShape()
-    }
-    
     private func setShape() {
-        
         currentPageIndex = CGFloat(1) / CGFloat(sliderData.count)
         
         let viewSize = CGSize(width: 60, height: 60)
-            let cornerRadius: CGFloat = 20
-            let inset: CGFloat = 5
-            
-            let expandedRect = CGRect(x: -inset, y: -inset, width: viewSize.width + inset * 2, height: viewSize.height + inset * 2)
-            let nextStroke = UIBezierPath(roundedRect: expandedRect, cornerRadius: cornerRadius)
+        let cornerRadius: CGFloat = 20
+        let inset: CGFloat = 5
+        
+        let expandedRect = CGRect(x: -inset, y: -inset, width: viewSize.width + inset * 2, height: viewSize.height + inset * 2)
+        let nextStroke = UIBezierPath(roundedRect: expandedRect, cornerRadius: cornerRadius)
         
         let trackPath = CAShapeLayer()
         trackPath.path = nextStroke.cgPath
@@ -155,7 +150,6 @@ class OnboardingViewController: UIViewController {
     }
     
     private func setControl() {
-        
         view.addSubview(hStack)
         
         let pagerStack = UIStackView()
@@ -185,7 +179,6 @@ class OnboardingViewController: UIViewController {
         hStack.addArrangedSubview(nextButton)
         
         NSLayoutConstraint.activate([
-            
             hStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             hStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             hStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
@@ -203,25 +196,35 @@ class OnboardingViewController: UIViewController {
         ])
     }
     
+    //MARK: ObjC Methods
     @objc func nextSlide() {
         let maxSlide = sliderData.count
         
         if currentSlide < maxSlide - 1 {
             currentSlide += 1
             onboardingCollectionView.scrollToItem(at: IndexPath(item: currentSlide, section: 0), at: .centeredHorizontally, animated: true)
+        } else {
+            let vc = CustomTabBarController()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }
     }
     
     @objc func scrollToSlide(sender: UIGestureRecognizer) {
         if let index = sender.view?.tag {
             onboardingCollectionView.scrollToItem(at: IndexPath(item: index - 1, section: 0), at: .centeredHorizontally, animated: true)
-            
             currentSlide = index - 1
         }
     }
     
+    @objc func skipButtonTapped() {
+        let vc = CustomTabBarController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
 }
 
+//MARK: UICollectionViewDelegate & UICollectionViewDataSource
 extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sliderData.count
@@ -278,11 +281,4 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // try this for custom pager scroll
     }
-    
-}
-
-struct SliderItem {
-    var title: String
-    var text: String
-    var animationName: String
 }
