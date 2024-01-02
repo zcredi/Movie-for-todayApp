@@ -45,7 +45,6 @@ class OnboardingViewController: UIViewController {
         button.setTitle("Skip", for: .normal)
         button.setTitleColor(UIColor.textColorWhite, for: .normal)
         button.titleLabel?.font = UIFont.montserratRegular14()
-        //        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -129,7 +128,12 @@ class OnboardingViewController: UIViewController {
         
         currentPageIndex = CGFloat(1) / CGFloat(sliderData.count)
         
-        let nextStroke = UIBezierPath(arcCenter: CGPoint(x: 30, y: 30), radius: 40, startAngle: -(.pi / 2), endAngle: 5, clockwise: true)
+        let viewSize = CGSize(width: 60, height: 60)
+            let cornerRadius: CGFloat = 20
+            let inset: CGFloat = 5
+            
+            let expandedRect = CGRect(x: -inset, y: -inset, width: viewSize.width + inset * 2, height: viewSize.height + inset * 2)
+            let nextStroke = UIBezierPath(roundedRect: expandedRect, cornerRadius: cornerRadius)
         
         let trackPath = CAShapeLayer()
         trackPath.path = nextStroke.cgPath
@@ -184,10 +188,8 @@ class OnboardingViewController: UIViewController {
             
             hStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             hStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            hStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            
+            hStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
-        
     }
     
     private func setupCollectionView() {
