@@ -14,8 +14,9 @@ class PolicyCell: UITableViewCell {
         let textView = UITextView()
         textView.backgroundColor = .primaryDark
         textView.font = .systemFont(ofSize: 15.0)
-        textView.textColor = .gray
+        textView.textColor = .textColorWhiteGrey
         textView.isEditable = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     

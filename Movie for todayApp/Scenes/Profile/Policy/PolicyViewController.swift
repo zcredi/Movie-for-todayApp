@@ -13,7 +13,6 @@ struct PolicyModel {
 }
 
 class PolicyViewController: UIViewController {
-    
     // UI components
     private lazy var tableView = createTableView()
     // Internal vars

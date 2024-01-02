@@ -129,6 +129,7 @@ extension ProfileViewController {
         let aboutUs: ProfileSettingsItemModel =
             .init(title: "About Us",
                   image: UIImage(named: "ProfileImageSet/alert")) {
+                self.navigationController?.pushViewController(AboutUSViewController(), animated: true)
                 print("About Us cell")
             }
         // Log out section

@@ -14,6 +14,7 @@
 		6C329A642B3C706F00BE29DD /* ProfileLogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C329A632B3C706F00BE29DD /* ProfileLogOutCell.swift */; };
 		6C59970B2B3AFF62003B9878 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5997092B3AFF62003B9878 /* ProfileInteractor.swift */; };
 		6C59970C2B3AFF62003B9878 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59970A2B3AFF62003B9878 /* ProfilePresenter.swift */; };
+		6C9E1F1C2B4435AE00DCBD3F /* AboutUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F1B2B4435AE00DCBD3F /* AboutUSViewController.swift */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF32B39FF14000458BD /* PopularViewController.swift */; };
 		86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF52B39FF22000458BD /* MovieListViewController.swift */; };
@@ -45,6 +46,7 @@
 		6C329A632B3C706F00BE29DD /* ProfileLogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogOutCell.swift; sourceTree = "<group>"; };
 		6C5997092B3AFF62003B9878 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		6C59970A2B3AFF62003B9878 /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		6C9E1F1B2B4435AE00DCBD3F /* AboutUSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUSViewController.swift; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF32B39FF14000458BD /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		86157FF52B39FF22000458BD /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 				6C194E932B40301300D67E74 /* PolicyCell.swift */,
 			);
 			path = Policy;
+			sourceTree = "<group>";
+		};
+		6C9E1F1A2B44351400DCBD3F /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				6C9E1F1B2B4435AE00DCBD3F /* AboutUSViewController.swift */,
+			);
+			path = AboutUs;
 			sourceTree = "<group>";
 		};
 		86157FF02B398E99000458BD /* Managers */ = {
@@ -214,10 +224,11 @@
 				6C5997092B3AFF62003B9878 /* ProfileInteractor.swift */,
 				6C59970A2B3AFF62003B9878 /* ProfilePresenter.swift */,
 				86157FFB2B39FF3E000458BD /* ProfileViewController.swift */,
-				6C194E902B402F9D00D67E74 /* Policy */,
 				6C329A612B3C703600BE29DD /* ProfileHeaderCell.swift */,
 				6C329A5F2B3C0EA400BE29DD /* ProfileSettingsItemCell.swift */,
 				6C329A632B3C706F00BE29DD /* ProfileLogOutCell.swift */,
+				6C194E902B402F9D00D67E74 /* Policy */,
+				6C9E1F1A2B44351400DCBD3F /* AboutUs */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -358,6 +369,7 @@
 				868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */,
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
+				6C9E1F1C2B4435AE00DCBD3F /* AboutUSViewController.swift in Sources */,
 				86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */,
 				6C59970C2B3AFF62003B9878 /* ProfilePresenter.swift in Sources */,
 				6C329A622B3C703600BE29DD /* ProfileHeaderCell.swift in Sources */,
