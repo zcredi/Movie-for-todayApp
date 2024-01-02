@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3700DCC72B3F952000636EFE /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC62B3F952000636EFE /* SliderCell.swift */; };
-		37021D452B419B76007A6A2C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 37021D442B419B76007A6A2C /* Lottie */; };
-		37021D492B419E96007A6A2C /* Animation 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 37021D462B419E96007A6A2C /* Animation 2.json */; };
-		37021D4A2B419E96007A6A2C /* Animation 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 37021D472B419E96007A6A2C /* Animation 1.json */; };
-		37021D4B2B419E96007A6A2C /* Animation 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 37021D482B419E96007A6A2C /* Animation 3.json */; };
-		37021D542B443014007A6A2C /* SliderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37021D532B443014007A6A2C /* SliderItem.swift */; };
-		37021D562B44303F007A6A2C /* SliderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37021D552B44303F007A6A2C /* SliderData.swift */; };
 		3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC42B3F817100636EFE /* CustomNavigationController.swift */; };
 		4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */; };
 		4094C94B2B3DE06B0067F5D1 /* UIView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */; };
@@ -48,12 +41,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3700DCC62B3F952000636EFE /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
-		37021D462B419E96007A6A2C /* Animation 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 2.json"; sourceTree = "<group>"; };
-		37021D472B419E96007A6A2C /* Animation 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 1.json"; sourceTree = "<group>"; };
-		37021D482B419E96007A6A2C /* Animation 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 3.json"; sourceTree = "<group>"; };
-		37021D532B443014007A6A2C /* SliderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderItem.swift; sourceTree = "<group>"; };
-		37021D552B44303F007A6A2C /* SliderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderData.swift; sourceTree = "<group>"; };
 		3700DCC42B3F817100636EFE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopularCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+App.swift"; sourceTree = "<group>"; };
@@ -94,21 +81,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37021D452B419B76007A6A2C /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37021D4C2B419E9D007A6A2C /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				37021D472B419E96007A6A2C /* Animation 1.json */,
-				37021D462B419E96007A6A2C /* Animation 2.json */,
-				37021D482B419E96007A6A2C /* Animation 3.json */,
-			);
-			path = Lottie;
 		4094C9452B3DDF800067F5D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,9 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				86157FFD2B39FF4B000458BD /* OnboardingViewController.swift */,
-				3700DCC62B3F952000636EFE /* SliderCell.swift */,
-				37021D532B443014007A6A2C /* SliderItem.swift */,
-				37021D552B44303F007A6A2C /* SliderData.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -303,7 +278,6 @@
 		868166E02B398167007FDF8F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				37021D4C2B419E9D007A6A2C /* Lottie */,
 				868166E12B398167007FDF8F /* Fonts */,
 				868166982B3969D5007FDF8F /* Assets.xcassets */,
 				8681669A2B3969D5007FDF8F /* LaunchScreen.storyboard */,
@@ -352,9 +326,6 @@
 			dependencies = (
 			);
 			name = "Movie for todayApp";
-			packageProductDependencies = (
-				37021D442B419B76007A6A2C /* Lottie */,
-			);
 			productName = "Movie for todayApp";
 			productReference = 8681668C2B3969D4007FDF8F /* Movie for todayApp.app */;
 			productType = "com.apple.product-type.application";
@@ -383,9 +354,6 @@
 				Base,
 			);
 			mainGroup = 868166832B3969D4007FDF8F;
-			packageReferences = (
-				37021D432B419B76007A6A2C /* XCRemoteSwiftPackageReference "lottie-ios" */,
-			);
 			productRefGroup = 8681668D2B3969D4007FDF8F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -403,10 +371,7 @@
 				86778CE22B3AE0CB00E548F1 /* Montserrat-Regular.ttf in Resources */,
 				8681669C2B3969D5007FDF8F /* LaunchScreen.storyboard in Resources */,
 				86778CE32B3AE0CB00E548F1 /* Montserrat-Medium.ttf in Resources */,
-				37021D4B2B419E96007A6A2C /* Animation 3.json in Resources */,
-				37021D4A2B419E96007A6A2C /* Animation 1.json in Resources */,
 				86778CE42B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf in Resources */,
-				37021D492B419E96007A6A2C /* Animation 2.json in Resources */,
 				868166992B3969D5007FDF8F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,8 +389,6 @@
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
 				86778CDC2B3AE07800E548F1 /* CustomTabBarController.swift in Sources */,
 				868166922B3969D4007FDF8F /* SceneDelegate.swift in Sources */,
-				3700DCC72B3F952000636EFE /* SliderCell.swift in Sources */,
-				37021D542B443014007A6A2C /* SliderItem.swift in Sources */,
 				4094C97D2B3F4A670067F5D1 /* HomeNavigationBar.swift in Sources */,
 				86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */,
 				861580002B39FF58000458BD /* WishlistViewController.swift in Sources */,
@@ -436,7 +399,6 @@
 				4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */,
 				4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */,
 				868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */,
-				37021D562B44303F007A6A2C /* SliderData.swift in Sources */,
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
 				4094C9732B3E06860067F5D1 /* UIButton+App.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
@@ -588,7 +550,6 @@
 				DEVELOPMENT_TEAM = 5MT2PBNQ85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Movie for todayApp/SupportingFiles/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Movie42Day;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -620,7 +581,6 @@
 				DEVELOPMENT_TEAM = 5MT2PBNQ85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Movie for todayApp/SupportingFiles/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Movie42Day;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -664,25 +624,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		37021D432B419B76007A6A2C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		37021D442B419B76007A6A2C /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 37021D432B419B76007A6A2C /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 868166842B3969D4007FDF8F /* Project object */;
 }

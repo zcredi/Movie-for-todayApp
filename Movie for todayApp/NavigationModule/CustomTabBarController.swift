@@ -64,7 +64,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         customTabBar = UIView(frame: tabBar.frame)
         view.addSubview(customTabBar)
         
-        
         let tabTitles = ["Home", "Search", "Tree", "Profile"]
         let tabImages = ["house.fill", "magnifyingglass", "puzzlepiece.fill", "person.fill"]
         
