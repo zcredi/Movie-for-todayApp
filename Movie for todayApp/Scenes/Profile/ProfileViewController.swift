@@ -106,6 +106,7 @@ extension ProfileViewController {
         let header: ProfileHeaderModel =
             .init(image: UIImage(named: "ProfileImageSet/avatar"), name: "Tiffany", email: "Tiffany007@gmail.com") {
                 print ("Pass to Edit Profile screen")
+                self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
             }
         // Settings section items
         // General
