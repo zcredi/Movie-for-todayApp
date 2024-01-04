@@ -47,9 +47,6 @@
 		869482FA2B46D8A7008144CB /* SliderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869482F92B46D8A7008144CB /* SliderData.swift */; };
 		869482FC2B46D8B8008144CB /* SliderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869482FB2B46D8B8008144CB /* SliderItem.swift */; };
 		869482FF2B46D8D7008144CB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 869482FE2B46D8D7008144CB /* Lottie */; };
-		869483052B46D92A008144CB /* Animation 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 869483022B46D92A008144CB /* Animation 1.json */; };
-		869483062B46D92A008144CB /* Animation 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 869483032B46D92A008144CB /* Animation 3.json */; };
-		869483072B46D92A008144CB /* Animation 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 869483042B46D92A008144CB /* Animation 2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,9 +91,6 @@
 		869482F72B46D898008144CB /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		869482F92B46D8A7008144CB /* SliderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderData.swift; sourceTree = "<group>"; };
 		869482FB2B46D8B8008144CB /* SliderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderItem.swift; sourceTree = "<group>"; };
-		869483022B46D92A008144CB /* Animation 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation 1.json"; path = "../../../../../Downloads/Animation 1.json"; sourceTree = "<group>"; };
-		869483032B46D92A008144CB /* Animation 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation 3.json"; path = "../../../../../Downloads/Animation 3.json"; sourceTree = "<group>"; };
-		869483042B46D92A008144CB /* Animation 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation 2.json"; path = "../../../../../Downloads/Animation 2.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,7 +336,6 @@
 		868166E02B398167007FDF8F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				869483012B46D91C008144CB /* Lottie */,
 				868166E12B398167007FDF8F /* Fonts */,
 				868166982B3969D5007FDF8F /* Assets.xcassets */,
 				8681669A2B3969D5007FDF8F /* LaunchScreen.storyboard */,
@@ -373,16 +366,6 @@
 				4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */,
 			);
 			path = UIConstants;
-			sourceTree = "<group>";
-		};
-		869483012B46D91C008144CB /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				869483022B46D92A008144CB /* Animation 1.json */,
-				869483042B46D92A008144CB /* Animation 2.json */,
-				869483032B46D92A008144CB /* Animation 3.json */,
-			);
-			path = Lottie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,13 +433,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				86778CE22B3AE0CB00E548F1 /* Montserrat-Regular.ttf in Resources */,
-				869483052B46D92A008144CB /* Animation 1.json in Resources */,
-				869483072B46D92A008144CB /* Animation 2.json in Resources */,
 				8681669C2B3969D5007FDF8F /* LaunchScreen.storyboard in Resources */,
 				86778CE32B3AE0CB00E548F1 /* Montserrat-Medium.ttf in Resources */,
 				86778CE42B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf in Resources */,
 				868166992B3969D5007FDF8F /* Assets.xcassets in Resources */,
-				869483062B46D92A008144CB /* Animation 3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
