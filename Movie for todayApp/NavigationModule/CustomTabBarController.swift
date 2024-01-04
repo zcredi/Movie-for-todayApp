@@ -51,7 +51,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let treeViewController = UIViewController()
         let profileViewController = ProfileViewController()
         
-        searchViewController.view.backgroundColor = .gray
+        searchViewController.view.backgroundColor = .primaryDark
         treeViewController.view.backgroundColor = .cyan
         profileViewController.view.backgroundColor = .blue
         

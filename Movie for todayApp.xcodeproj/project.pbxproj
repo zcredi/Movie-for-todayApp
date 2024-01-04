@@ -10,6 +10,8 @@
 		2CCDD12D2B40332800FC2196 /* RecentMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD12C2B40332800FC2196 /* RecentMovieCell.swift */; };
 		2CCDD12F2B4033C700FC2196 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD12E2B4033C700FC2196 /* SearchInteractor.swift */; };
 		2CCDD1312B4033E400FC2196 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD1302B4033E400FC2196 /* SearchPresenter.swift */; };
+		2CCDD1332B46F7D200FC2196 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD1322B46F7D200FC2196 /* SearchResult.swift */; };
+		2CCDD1352B46FD0600FC2196 /* SearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDD1342B46FD0600FC2196 /* SearchTableView.swift */; };
 		3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC42B3F817100636EFE /* CustomNavigationController.swift */; };
 		4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */; };
 		4094C94B2B3DE06B0067F5D1 /* UIView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */; };
@@ -47,6 +49,8 @@
 		2CCDD12C2B40332800FC2196 /* RecentMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMovieCell.swift; sourceTree = "<group>"; };
 		2CCDD12E2B4033C700FC2196 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		2CCDD1302B4033E400FC2196 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		2CCDD1322B46F7D200FC2196 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		2CCDD1342B46FD0600FC2196 /* SearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableView.swift; sourceTree = "<group>"; };
 		3700DCC42B3F817100636EFE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopularCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+App.swift"; sourceTree = "<group>"; };
@@ -96,6 +100,9 @@
 		2CCDD1282B4031C200FC2196 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86157FF72B39FF2E000458BD /* SearchViewController.swift */,
+				2CCDD1322B46F7D200FC2196 /* SearchResult.swift */,
+				2CCDD1342B46FD0600FC2196 /* SearchTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,7 +286,6 @@
 				2CCDD12A2B4031D300FC2196 /* Presenter */,
 				2CCDD1292B4031CB00FC2196 /* Interactor */,
 				2CCDD1282B4031C200FC2196 /* View */,
-				86157FF72B39FF2E000458BD /* SearchViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				861580002B39FF58000458BD /* WishlistViewController.swift in Sources */,
 				86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */,
 				86778CDE2B3AE08400E548F1 /* CustomTabBarItem.swift in Sources */,
+				2CCDD1352B46FD0600FC2196 /* SearchTableView.swift in Sources */,
 				861580022B39FF77000458BD /* APIManager.swift in Sources */,
 				4094C97A2B3F2D3B0067F5D1 /* SectionHeaderView.swift in Sources */,
 				4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */,
@@ -446,6 +453,7 @@
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
 				4094C9732B3E06860067F5D1 /* UIButton+App.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
+				2CCDD1332B46F7D200FC2196 /* SearchResult.swift in Sources */,
 				86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */,
 				86157FFA2B39FF35000458BD /* DetailViewController.swift in Sources */,
 				868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */,
