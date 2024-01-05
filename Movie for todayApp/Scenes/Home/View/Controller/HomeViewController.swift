@@ -1,65 +1,37 @@
 import UIKit
 
-struct PopularCategory: Hashable {
-    let id = UUID()
-    let popularCategoryFilms: UIImage
-}
-
-struct PopularTagCategory: Hashable {
-    let id = UUID()
-    let popularTagCategory: String
-}
-
-struct MostPopular: Hashable {
-    let id = UUID()
-    let filmTitle: String
-}
-
 enum Item: Hashable {
-    case popularCategory(PopularCategory)
-    case popularTagCategory(PopularTagCategory)
-    case mostPopular(MostPopular)
+    case popularCategory(Films)
+    case popularTagCategory(HomeCategoryTag)
+    case mostPopular(HomePopularFilm)
 }
 
 class HomeViewController: UIViewController {
+    let dispatchGroup = DispatchGroup()
+    
     enum Section: Hashable, CaseIterable {
         case popularCategory
         case popularTagCategory
         case mostPopular
     }
-
+    
     enum SupplementaryViewKing {
         static let header = "header"
     }
-
+    
     var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
     var sections = Section.allCases
-    let popularCategoryArray: [PopularCategory] = [
-        PopularCategory(popularCategoryFilms: UIImage(systemName: "person.fill")!),
-        PopularCategory(popularCategoryFilms: UIImage(systemName: "person.fill")!),
-        PopularCategory(popularCategoryFilms: UIImage(systemName: "person.fill")!)
-    ]
-    let popularCategoryTagArray: [PopularTagCategory] = [
-        PopularTagCategory(popularTagCategory: "All"),
-        PopularTagCategory(popularTagCategory: "Comedy"),
-        PopularTagCategory(popularTagCategory: "Animation"),
-        PopularTagCategory(popularTagCategory: "Documentation"),
-        PopularTagCategory(popularTagCategory: "Documentation")
-    ]
-    let mostPopularArray: [MostPopular] = [
-        MostPopular(filmTitle: "Spider-Man"),
-        MostPopular(filmTitle: "Spider-Man"),
-        MostPopular(filmTitle: "Spider-Man"),
-        MostPopular(filmTitle: "Spider-Man"),
-        MostPopular(filmTitle: "Spider-Man")
-    ]
+    private let homeViewModel = HomeViewModel()
+    
+    let popularCategoryTagArray = HomeCategoryTag.allCases
+    
     var selectedTagIndexPath: IndexPath?
     private lazy var homeNavigationBar: HomeNavigationBar = {
         let nb = HomeNavigationBar()
         nb.delegate = self
         return nb
     }()
-
+    
     private lazy var homeCollectionView: UICollectionView = {
         let layout = createLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -67,26 +39,58 @@ class HomeViewController: UIViewController {
         cv.backgroundColor = .clear
         return cv
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .primaryDark
         selectedTagIndexPath = IndexPath(row: 0, section: 1)
         setupCollectionView()
-        createDataSource()
-        createDataSourceSVP()
-        configureDataSource()
+        dispatchGroup.enter()
         setupUI()
-        setSelectedCategoriesCell()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        homeViewModel.fetchFilms(genre: "аниме") { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.homeViewModel.popularFilms = success
+                self?.dispatchGroup.leave()
+            case .failure(let failure):
+                print(failure.localizedDescription)
+                self?.dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.enter()
+        
+        homeViewModel.fetchHeaderFilms { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.homeViewModel.headerFilms = success
+                self?.dispatchGroup.leave()
+            case .failure(let failure):
+                print(failure.localizedDescription)
+                self?.dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.createDataSource()
+            self.createDataSourceSVP()
+            self.configureDataSource()
+            self.homeCollectionView.reloadData()
+            print("Notify")
+        }
+    }
+    
     private func setupCollectionView() {
         homeCollectionView.register(HomePopularCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomePopularCategoryCollectionViewCell.identifier)
         homeCollectionView.register(HomeCategoryTagCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryTagCollectionViewCell.identifier)
         homeCollectionView.register(HomeMostPopularCollectionViewCell.self, forCellWithReuseIdentifier: HomeMostPopularCollectionViewCell.identifier)
         homeCollectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: SupplementaryViewKing.header, withReuseIdentifier: SectionHeaderView.identifier)
     }
-
+    
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
             let section = self.sections[sectionIndex]
@@ -97,7 +101,7 @@ class HomeViewController: UIViewController {
             )
             let headerItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: SupplementaryViewKing.header, alignment: .top)
             headerItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
-
+            
             switch section {
             case .popularCategory:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(160))
@@ -115,11 +119,11 @@ class HomeViewController: UIViewController {
             case .popularTagCategory:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+                
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 3)
                 let groupSize = NSCollectionLayoutSize(
-                    widthDimension: .absolute(100),
-                    heightDimension: .absolute(40)
+                    widthDimension: .estimated(100),
+                    heightDimension: .estimated(40)
                 )
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
@@ -130,23 +134,23 @@ class HomeViewController: UIViewController {
             case .mostPopular:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(200))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+                
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
                 let groupSize = NSCollectionLayoutSize(
-                    widthDimension: .absolute(150),
-                    heightDimension: .absolute(200)
+                    widthDimension: .estimated(135),
+                    heightDimension: .estimated(230)
                 )
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .continuous
                 section.boundarySupplementaryItems = [headerItem]
-                section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 20, bottom: 20, trailing: 20)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 20, bottom: 60, trailing: 20)
                 return section
             }
         }
         return layout
     }
-
+    
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: homeCollectionView) { _, indexPath, _ -> UICollectionViewCell? in
             let section = self.sections[indexPath.section]
@@ -155,13 +159,14 @@ class HomeViewController: UIViewController {
                 guard let cell = self.homeCollectionView.dequeueReusableCell(withReuseIdentifier: HomePopularCategoryCollectionViewCell.identifier, for: indexPath) as? HomePopularCategoryCollectionViewCell else {
                     return UICollectionViewCell()
                 }
+                cell.configureCell(self.homeViewModel.headerFilms[indexPath.row])
                 return cell
             case .popularTagCategory:
                 guard let cell = self.homeCollectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryTagCollectionViewCell.identifier, for: indexPath) as? HomeCategoryTagCollectionViewCell else {
                     return UICollectionViewCell()
                 }
                 cell.delegate = self
-                cell.configureCell(self.popularCategoryTagArray[indexPath.row].popularTagCategory)
+                cell.configureCell(self.popularCategoryTagArray[indexPath.row])
                 if indexPath == self.selectedTagIndexPath {
                     cell.toggleButtonState()
                 } else {
@@ -174,16 +179,17 @@ class HomeViewController: UIViewController {
                 else {
                     return UICollectionViewCell()
                 }
+                cell.configureCell(self.homeViewModel.popularFilms[indexPath.row])
                 return cell
             }
         }
     }
-
+    
     private func createDataSourceSVP() {
         dataSource.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath -> UICollectionReusableView? in
-            guard let self = self else { return nil }
+            guard let self else { return nil }
             let section = self.sections[indexPath.section]
-
+            
             switch kind {
             case SupplementaryViewKing.header:
                 let sectionName: String
@@ -202,53 +208,82 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
+    
     private func configureDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.popularCategory, .popularTagCategory, .mostPopular])
-        let popularCategoryItems = popularCategoryArray.map { Item.popularCategory($0) }
+        let popularCategoryItems = homeViewModel.headerFilms.map { Item.popularCategory($0) }
         snapshot.appendItems(popularCategoryItems, toSection: .popularCategory)
         let popularTagCategoryItems = popularCategoryTagArray.map { Item.popularTagCategory($0) }
         snapshot.appendItems(popularTagCategoryItems, toSection: .popularTagCategory)
-        let mostPopularItems = mostPopularArray.map { Item.mostPopular($0) }
+        let mostPopularItems = homeViewModel.popularFilms.map { Item.mostPopular($0) }
         snapshot.appendItems(mostPopularItems, toSection: .mostPopular)
         dataSource?.apply(snapshot)
     }
-
+    
     private func setSelectedCategoriesCell() {}
-
+    
     private func setupUI() {
         view.addSubviews(homeNavigationBar, homeCollectionView)
         navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
         NSLayoutConstraint.activate([
             homeNavigationBar.heightAnchor.constraint(equalToConstant: 100),
             homeNavigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             homeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             homeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-
+        
         NSLayoutConstraint.activate([
             homeCollectionView.topAnchor.constraint(equalTo: homeNavigationBar.bottomAnchor, constant: 40),
             homeCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             homeCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            homeCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            homeCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
 
 extension HomeViewController: HomeCategoryTagPressed {
     func didTapButton(cell: HomeCategoryTagCollectionViewCell) {
+        guard let currentSelectedIndexPath = homeCollectionView.indexPath(for: cell) else {
+            return
+        }
+        // Check if the currently selected index matches the previous one
+        if currentSelectedIndexPath == self.selectedTagIndexPath {
+            return
+        }
+
+        // Process the previously selected cell
         if let previousSelectedIndexPath = selectedTagIndexPath,
-           let previousCell = homeCollectionView.cellForItem(at: previousSelectedIndexPath) as? HomeCategoryTagCollectionViewCell
+           let previousCell = homeCollectionView.cellForItem(at: previousSelectedIndexPath) as? HomeCategoryTagCollectionViewCell,
+           currentSelectedIndexPath != previousSelectedIndexPath
         {
             previousCell.resetButtonState()
         }
-
-        if let currentSelectedIndexPath = homeCollectionView.indexPath(for: cell) {
-            selectedTagIndexPath = currentSelectedIndexPath
-            cell.toggleButtonState()
+        
+        // Update the selected cell and load data
+        selectedTagIndexPath = currentSelectedIndexPath
+        cell.toggleButtonState()
+        
+        self.homeViewModel.fetchFilms(genre: popularCategoryTagArray[currentSelectedIndexPath.row].genre) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    self?.homeViewModel.popularFilms = success
+                    self?.updateSnapshot()
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+                }
+            }
         }
+    }
+
+    func updateSnapshot() {
+        var snapshot = dataSource.snapshot()
+        let popularCategoryItems = homeViewModel.popularFilms.map { Item.mostPopular($0) }
+        snapshot.deleteItems(snapshot.itemIdentifiers(inSection: .mostPopular))
+        snapshot.appendItems(popularCategoryItems, toSection: .mostPopular)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 

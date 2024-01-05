@@ -1,6 +1,8 @@
 import UIKit
 
 class HomeMostPopularCollectionViewCell: UICollectionViewCell {
+    private let urlGenerator = URLRequestGenerator()
+    private let networkManager = NetworkManager()
     static let identifier = "\(HomeMostPopularCollectionViewCell.self)"
     private lazy var containerFilm: UIView = {
         let view = UIView()
@@ -9,10 +11,13 @@ class HomeMostPopularCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = .primarySoft
         return view
     }()
+    
     private lazy var titleFilmLabel = UILabel(text: "Life of PI", font: .boldSystemFont(ofSize: 14), textColor: .white)
     private lazy var categoryFilmLabel = UILabel(text: "Action", font: .systemFont(ofSize: 10), textColor: .white)
     private lazy var filmImage: UIImageView = {
         let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         image.layer.cornerRadius = 12
         image.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         image.backgroundColor = .systemPink
@@ -29,19 +34,39 @@ class HomeMostPopularCollectionViewCell: UICollectionViewCell {
     private lazy var ratingImage = UIImageView(image: UIImage(systemName: "star.fill")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal))
     private lazy var ratingLabel = UILabel(text: "4.5", font: .systemFont(ofSize: 12), textColor: .systemOrange)
     
-    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupCell()
         setupUI()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupCell() {
         self.layer.cornerRadius = 12
+    }
+    
+    public func configureCell(_ model: HomePopularFilm) {
+        guard let url = URL(string: model.poster.url) else { return }
+        let sizeImage = CGSize(width: 240, height: 450)
+        ImageCache.shared.downloadImage(from: url, imageSize: sizeImage) { [weak self] data in
+            self?.filmImage.image = data
+        }
+        titleFilmLabel.text = model.name
+        categoryFilmLabel.text = model.genres?[0].name
+        ratingLabel.text = String(format: "%.1f", model.rating.kp)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleFilmLabel.text = nil
+        categoryFilmLabel.text = nil
+        ratingLabel.text = nil
+//        filmImage.image = nil
+        //        filmImage.kf.cancelDownloadTask()
     }
     
     private func setupUI() {
@@ -53,7 +78,7 @@ class HomeMostPopularCollectionViewCell: UICollectionViewCell {
             containerFilm.bottomAnchor.constraint(equalTo: bottomAnchor),
             containerFilm.leadingAnchor.constraint(equalTo: leadingAnchor),
             containerFilm.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerFilm.heightAnchor.constraint(equalToConstant: 50)
+            containerFilm.heightAnchor.constraint(equalToConstant: 60)
         ])
         
         NSLayoutConstraint.activate([
@@ -70,7 +95,7 @@ class HomeMostPopularCollectionViewCell: UICollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            categoryFilmLabel.bottomAnchor.constraint(equalTo: containerFilm.bottomAnchor, constant: -8),
+            categoryFilmLabel.bottomAnchor.constraint(equalTo: containerFilm.bottomAnchor, constant: -15),
             categoryFilmLabel.leadingAnchor.constraint(equalTo: containerFilm.leadingAnchor, constant: 8),
             categoryFilmLabel.trailingAnchor.constraint(equalTo: containerFilm.trailingAnchor, constant: -8)
         ])

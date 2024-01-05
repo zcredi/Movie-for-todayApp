@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC42B3F817100636EFE /* CustomNavigationController.swift */; };
+		4031567F2B45EC1E00636FEB /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031567E2B45EC1E00636FEB /* ImageCacheManager.swift */; };
+		403156822B46021F00636FEB /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = 403156812B46021F00636FEB /* DataCache */; };
+		403156842B47495800636FEB /* FilmCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403156832B47495700636FEB /* FilmCollection.swift */; };
 		4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */; };
 		4094C94B2B3DE06B0067F5D1 /* UIView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */; };
 		4094C9732B3E06860067F5D1 /* UIButton+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9722B3E06860067F5D1 /* UIButton+App.swift */; };
@@ -17,6 +20,13 @@
 		4094C97D2B3F4A670067F5D1 /* HomeNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C97C2B3F4A670067F5D1 /* HomeNavigationBar.swift */; };
 		4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C97E2B3F55C70067F5D1 /* UISearchBar+App.swift */; };
 		4094C9812B3F5B160067F5D1 /* UIBlurEffect+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */; };
+		40BCB4422B41D32800CBB0CD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BCB4412B41D32800CBB0CD /* HomeViewModel.swift */; };
+		40BCB4452B41D35700CBB0CD /* HomeCategoryTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BCB4442B41D35700CBB0CD /* HomeCategoryTag.swift */; };
+		40BCB4472B41D36500CBB0CD /* HomeFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BCB4462B41D36500CBB0CD /* HomeFilm.swift */; };
+		40BCB44A2B41D38000CBB0CD /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BCB4492B41D38000CBB0CD /* ImageModel.swift */; };
+		40BCB44C2B41D39000CBB0CD /* URLRequestGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BCB44B2B41D39000CBB0CD /* URLRequestGenerator.swift */; };
+		40BCB44F2B41D3C200CBB0CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BCB44E2B41D3C200CBB0CD /* NetworkManager.swift */; };
+		40BCB4522B41D45D00CBB0CD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 40BCB4512B41D45D00CBB0CD /* Kingfisher */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF32B39FF14000458BD /* PopularViewController.swift */; };
 		86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF52B39FF22000458BD /* MovieListViewController.swift */; };
@@ -42,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		3700DCC42B3F817100636EFE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		4031567E2B45EC1E00636FEB /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		403156832B47495700636FEB /* FilmCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollection.swift; sourceTree = "<group>"; };
 		4094C9482B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopularCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4094C94A2B3DE06B0067F5D1 /* UIView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+App.swift"; sourceTree = "<group>"; };
 		4094C9722B3E06860067F5D1 /* UIButton+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+App.swift"; sourceTree = "<group>"; };
@@ -51,6 +63,12 @@
 		4094C97C2B3F4A670067F5D1 /* HomeNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBar.swift; sourceTree = "<group>"; };
 		4094C97E2B3F55C70067F5D1 /* UISearchBar+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+App.swift"; sourceTree = "<group>"; };
 		4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBlurEffect+App.swift"; sourceTree = "<group>"; };
+		40BCB4412B41D32800CBB0CD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		40BCB4442B41D35700CBB0CD /* HomeCategoryTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryTag.swift; sourceTree = "<group>"; };
+		40BCB4462B41D36500CBB0CD /* HomeFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFilm.swift; sourceTree = "<group>"; };
+		40BCB4492B41D38000CBB0CD /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		40BCB44B2B41D39000CBB0CD /* URLRequestGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestGenerator.swift; sourceTree = "<group>"; };
+		40BCB44E2B41D3C200CBB0CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF32B39FF14000458BD /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		86157FF52B39FF22000458BD /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40BCB4522B41D45D00CBB0CD /* Kingfisher in Frameworks */,
+				403156822B46021F00636FEB /* DataCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +152,51 @@
 			path = NavigationBar;
 			sourceTree = "<group>";
 		};
+		40BCB43C2B41D29200CBB0CD /* Netwrok */ = {
+			isa = PBXGroup;
+			children = (
+				40BCB43D2B41D29C00CBB0CD /* APIManagers */,
+				40BCB43E2B41D2D200CBB0CD /* APIModels */,
+			);
+			path = Netwrok;
+			sourceTree = "<group>";
+		};
+		40BCB43D2B41D29C00CBB0CD /* APIManagers */ = {
+			isa = PBXGroup;
+			children = (
+				40BCB44B2B41D39000CBB0CD /* URLRequestGenerator.swift */,
+				40BCB44E2B41D3C200CBB0CD /* NetworkManager.swift */,
+			);
+			path = APIManagers;
+			sourceTree = "<group>";
+		};
+		40BCB43E2B41D2D200CBB0CD /* APIModels */ = {
+			isa = PBXGroup;
+			children = (
+				40BCB4462B41D36500CBB0CD /* HomeFilm.swift */,
+				40BCB4492B41D38000CBB0CD /* ImageModel.swift */,
+				403156832B47495700636FEB /* FilmCollection.swift */,
+			);
+			path = APIModels;
+			sourceTree = "<group>";
+		};
+		40BCB4402B41D31B00CBB0CD /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				40BCB4412B41D32800CBB0CD /* HomeViewModel.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
+		40BCB4432B41D34100CBB0CD /* Modell */ = {
+			isa = PBXGroup;
+			children = (
+				40BCB4442B41D35700CBB0CD /* HomeCategoryTag.swift */,
+				4031567E2B45EC1E00636FEB /* ImageCacheManager.swift */,
+			);
+			path = Modell;
+			sourceTree = "<group>";
+		};
 		86157FF02B398E99000458BD /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +234,7 @@
 		8681668E2B3969D4007FDF8F /* Movie for todayApp */ = {
 			isa = PBXGroup;
 			children = (
+				40BCB43C2B41D29200CBB0CD /* Netwrok */,
 				868166D52B398144007FDF8F /* Application */,
 				86157FF02B398E99000458BD /* Managers */,
 				868166D62B39814D007FDF8F /* Models */,
@@ -212,6 +278,8 @@
 		868166D82B398153007FDF8F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				40BCB4432B41D34100CBB0CD /* Modell */,
+				40BCB4402B41D31B00CBB0CD /* VM */,
 				4094C9452B3DDF800067F5D1 /* View */,
 				868166D92B398153007FDF8F /* Popular */,
 				868166DA2B398153007FDF8F /* MovieList */,
@@ -326,6 +394,10 @@
 			dependencies = (
 			);
 			name = "Movie for todayApp";
+			packageProductDependencies = (
+				40BCB4512B41D45D00CBB0CD /* Kingfisher */,
+				403156812B46021F00636FEB /* DataCache */,
+			);
 			productName = "Movie for todayApp";
 			productReference = 8681668C2B3969D4007FDF8F /* Movie for todayApp.app */;
 			productType = "com.apple.product-type.application";
@@ -354,6 +426,10 @@
 				Base,
 			);
 			mainGroup = 868166832B3969D4007FDF8F;
+			packageReferences = (
+				40BCB4502B41D45D00CBB0CD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				403156802B46021F00636FEB /* XCRemoteSwiftPackageReference "DataCache" */,
+			);
 			productRefGroup = 8681668D2B3969D4007FDF8F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -384,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4094C9752B3E08260067F5D1 /* HomeCategoryTagCollectionViewCell.swift in Sources */,
+				40BCB44A2B41D38000CBB0CD /* ImageModel.swift in Sources */,
 				868166E72B3981C7007FDF8F /* UIFont+App.swift in Sources */,
 				4094C9772B3E14DB0067F5D1 /* HomeMostPopularCollectionViewCell.swift in Sources */,
 				868166902B3969D4007FDF8F /* AppDelegate.swift in Sources */,
@@ -393,18 +470,25 @@
 				86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */,
 				861580002B39FF58000458BD /* WishlistViewController.swift in Sources */,
 				86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */,
+				40BCB4422B41D32800CBB0CD /* HomeViewModel.swift in Sources */,
 				86778CDE2B3AE08400E548F1 /* CustomTabBarItem.swift in Sources */,
 				861580022B39FF77000458BD /* APIManager.swift in Sources */,
 				4094C97A2B3F2D3B0067F5D1 /* SectionHeaderView.swift in Sources */,
+				403156842B47495800636FEB /* FilmCollection.swift in Sources */,
 				4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */,
 				4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */,
 				868166E52B3981BE007FDF8F /* UIColor+App.swift in Sources */,
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
 				4094C9732B3E06860067F5D1 /* UIButton+App.swift in Sources */,
+				4031567F2B45EC1E00636FEB /* ImageCacheManager.swift in Sources */,
+				40BCB44F2B41D3C200CBB0CD /* NetworkManager.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
 				86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */,
+				40BCB4472B41D36500CBB0CD /* HomeFilm.swift in Sources */,
 				86157FFA2B39FF35000458BD /* DetailViewController.swift in Sources */,
 				868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */,
+				40BCB4452B41D35700CBB0CD /* HomeCategoryTag.swift in Sources */,
+				40BCB44C2B41D39000CBB0CD /* URLRequestGenerator.swift in Sources */,
 				3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */,
 				4094C94B2B3DE06B0067F5D1 /* UIView+App.swift in Sources */,
 				4094C9812B3F5B160067F5D1 /* UIBlurEffect+App.swift in Sources */,
@@ -624,6 +708,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		403156802B46021F00636FEB /* XCRemoteSwiftPackageReference "DataCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+		40BCB4502B41D45D00CBB0CD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		403156812B46021F00636FEB /* DataCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 403156802B46021F00636FEB /* XCRemoteSwiftPackageReference "DataCache" */;
+			productName = DataCache;
+		};
+		40BCB4512B41D45D00CBB0CD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40BCB4502B41D45D00CBB0CD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 868166842B3969D4007FDF8F /* Project object */;
 }

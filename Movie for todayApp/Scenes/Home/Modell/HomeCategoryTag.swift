@@ -1,0 +1,103 @@
+import Foundation
+
+enum HomeCategoryTag: String, CaseIterable {
+    case anime = "Anime"
+    case child = "Child"
+    case sport = "Sport"
+    case horrors = "Horrors"
+    case game = "Game"
+    case comedy = "Comedy"
+    case drama = "Drama"
+    case criminal = "Criminal"
+    case fantasy = "Fantasy"
+    case family = "Family"
+    
+    var genre: String {
+        switch self {
+        case .anime: return "аниме"
+        case .child: return "детский"
+        case .sport: return "спорт"
+        case .horrors: return "ужасы"
+        case .game: return "игра"
+        case .comedy: return "комедия"
+        case .drama: return "драма"
+        case .criminal: return "криминал"
+        case .fantasy: return "фантастика"
+        case .family: return "семейный"
+        }
+    }
+}
+
+
+
+enum HomeCategoryTag1: String, CaseIterable {
+    case anime = "Anime"
+    case biography = "Biography"
+    case actionMovie = "Action Movie"
+    case western = "Western"
+    case military = "Military"
+    case detective = "Detective"
+    case child = "Child"
+    case forEdults = "For Edults"
+    case documentary = "Documentary"
+    case drama = "Drama"
+    case game = "Game"
+    case history = "History"
+    case comedy = "Comedy"
+    case concert = "Concert"
+    case comedienne = "Comedienne"
+    case criminal = "Criminal"
+    case melodrama = "Melodrama"
+    case music = "Music"
+    case cartoon = "Cartoon"
+    case musical = "Musical"
+    case news = "News"
+    case adventures = "Adventures"
+    case realityTV = "Reality TV"
+    case family = "Family"
+    case sport = "Sport"
+    case talkShow = "Talk show"
+    case thriller = "Thriller"
+    case horrors = "Horrors"
+    case fiction = "Fiction"
+    case noir = "Noir"
+    case fantasy = "Fantasy"
+    case ceremony = "Ceremony"
+    
+    var slug: String {
+        switch self {
+        case .anime: return "аниме"
+        case .biography: return "биография"
+        case .actionMovie: return "боевик"
+        case .western: return "вестерн"
+        case .military: return "военный"
+        case .detective: return "детектив"
+        case .child: return "детский"
+        case .forEdults: return "dlya-vzroslyh"
+        case .documentary: return "документальный"
+        case .drama: return "драма"
+        case .game: return "игра"
+        case .history: return "история"
+        case .comedy: return "комедия"
+        case .concert: return "концерт"
+        case .comedienne: return "короткометражка"
+        case .criminal: return "криминал"
+        case .melodrama: return "мелодрама"
+        case .music: return "музыка"
+        case .cartoon: return "мультфильм"
+        case .musical: return "музыка"
+        case .news: return "новости"
+        case .adventures: return "приключения"
+        case .realityTV: return "realnoe-TV"
+        case .family: return "семейный"
+        case .sport: return "спорт"
+        case .talkShow: return "tok-shou"
+        case .thriller: return "триллер"
+        case .horrors: return "uzhasy"
+        case .fiction: return "фантастика"
+        case .noir: return "film-nuar"
+        case .fantasy: return "фентези"
+        case .ceremony: return "церемония"
+        }
+    }
+}
