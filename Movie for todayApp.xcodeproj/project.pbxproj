@@ -18,6 +18,7 @@
 		4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C97E2B3F55C70067F5D1 /* UISearchBar+App.swift */; };
 		4094C9812B3F5B160067F5D1 /* UIBlurEffect+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */; };
 		6C8391672B459272003BCC40 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8391662B459272003BCC40 /* EditProfileViewController.swift */; };
+		6C875E302B48449B00BAB48B /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C875E2F2B48449B00BAB48B /* PolicyViewController.swift */; };
 		6C9E1F542B447EDC00DCBD3F /* ProfileSettingsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F532B447EDC00DCBD3F /* ProfileSettingsItemCell.swift */; };
 		6C9E1F562B447EE500DCBD3F /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F552B447EE500DCBD3F /* ProfileHeaderCell.swift */; };
 		6C9E1F5A2B447EED00DCBD3F /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F572B447EED00DCBD3F /* ProfileInteractor.swift */; };
@@ -25,7 +26,6 @@
 		6C9E1F5C2B447EED00DCBD3F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F592B447EED00DCBD3F /* ProfilePresenter.swift */; };
 		6C9E1F612B447F0300DCBD3F /* PolicyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F5F2B447F0300DCBD3F /* PolicyCell.swift */; };
 		6C9E1F642B44843700DCBD3F /* AboutUSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F632B44843700DCBD3F /* AboutUSViewController.swift */; };
-		6C9E1F662B44844300DCBD3F /* PolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E1F652B44844300DCBD3F /* PolicyViewController.swift */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF32B39FF14000458BD /* PopularViewController.swift */; };
 		86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF52B39FF22000458BD /* MovieListViewController.swift */; };
@@ -61,6 +61,7 @@
 		4094C97E2B3F55C70067F5D1 /* UISearchBar+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+App.swift"; sourceTree = "<group>"; };
 		4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBlurEffect+App.swift"; sourceTree = "<group>"; };
 		6C8391662B459272003BCC40 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		6C875E2F2B48449B00BAB48B /* PolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyViewController.swift; sourceTree = "<group>"; };
 		6C9E1F532B447EDC00DCBD3F /* ProfileSettingsItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingsItemCell.swift; sourceTree = "<group>"; };
 		6C9E1F552B447EE500DCBD3F /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
 		6C9E1F572B447EED00DCBD3F /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		6C9E1F592B447EED00DCBD3F /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		6C9E1F5F2B447F0300DCBD3F /* PolicyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyCell.swift; sourceTree = "<group>"; };
 		6C9E1F632B44843700DCBD3F /* AboutUSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUSViewController.swift; sourceTree = "<group>"; };
-		6C9E1F652B44844300DCBD3F /* PolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PolicyViewController.swift; path = ../../../../../../../../../Downloads/Profile/Policy/PolicyViewController.swift; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF32B39FF14000458BD /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		86157FF52B39FF22000458BD /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		6C9E1F512B447E6E00DCBD3F /* Policy */ = {
 			isa = PBXGroup;
 			children = (
-				6C9E1F652B44844300DCBD3F /* PolicyViewController.swift */,
+				6C875E2F2B48449B00BAB48B /* PolicyViewController.swift */,
 				6C9E1F5F2B447F0300DCBD3F /* PolicyCell.swift */,
 			);
 			path = Policy;
@@ -457,11 +457,11 @@
 				6C9E1F642B44843700DCBD3F /* AboutUSViewController.swift in Sources */,
 				6C9E1F562B447EE500DCBD3F /* ProfileHeaderCell.swift in Sources */,
 				86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */,
-				6C9E1F662B44844300DCBD3F /* PolicyViewController.swift in Sources */,
 				4094C9732B3E06860067F5D1 /* UIButton+App.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
 				86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */,
 				86157FFA2B39FF35000458BD /* DetailViewController.swift in Sources */,
+				6C875E302B48449B00BAB48B /* PolicyViewController.swift in Sources */,
 				868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */,
 				6C9E1F542B447EDC00DCBD3F /* ProfileSettingsItemCell.swift in Sources */,
 				3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */,

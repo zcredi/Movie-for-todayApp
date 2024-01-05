@@ -25,7 +25,49 @@ class EditProfileViewController: UIViewController {
         
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        uploadUserDefaults()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
+}
+//MARK: - Actions, UIImagePicker
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @objc func changeProfileImage() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            userImageView.image = selectedImage
+            saveAvatarToUserDefaults()
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+// MARK: - Text Fields Delegate
+extension EditProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveNameToUserDefaults()
+        saveEmailToUserDefaults()
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func hideKeyboard() {
+        saveNameToUserDefaults()
+        saveEmailToUserDefaults()
+        view.endEditing(true)
+    }
 }
 
 // MARK: - Setup UI
@@ -40,11 +82,9 @@ extension EditProfileViewController {
     
     func createIconContainer() -> UIView {
         let view = UIView()
-        //view.backgroundColor = .primarySoft
-        view.backgroundColor = .white
+        view.backgroundColor = .primarySoft
         view.clipsToBounds = true
         view.isUserInteractionEnabled = true
-        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
     }
@@ -52,6 +92,7 @@ extension EditProfileViewController {
     func createIconImageView() -> UIImageView{
         let imageView = UIImageView(image: UIImage(named: "ProfileImageSet/editAvatarImage"))
         imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         return imageView
     }
     
@@ -66,6 +107,7 @@ extension EditProfileViewController {
     
     func createNameTextField() -> UITextField {
         let textField = UITextField()
+        textField.delegate = self
         textField.attributedPlaceholder = NSAttributedString(
             string: "Username",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
@@ -81,6 +123,7 @@ extension EditProfileViewController {
     
     func createEmailTextField() -> UITextField {
         let textField = UITextField()
+        textField.delegate = self
         textField.attributedPlaceholder = NSAttributedString(
             string: "Email Address",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
@@ -106,9 +149,10 @@ extension EditProfileViewController {
         button.backgroundColor = .primaryBlueAccent
         return button
     }
-    
+    // MARK: - Setup View / Actions
     func setupUI() {
         setupView()
+        setupTargets()
         setupConstraints()
     }
     
@@ -116,7 +160,7 @@ extension EditProfileViewController {
         title = "Edit Profile"
         view.backgroundColor = .primaryDark
         view.addSubview(userImageView)
-        userImageView.addSubview(iconContainer)
+        view.addSubview(iconContainer)
         iconContainer.addSubview(iconImageView)
         view.addSubview(nameLabel)
         view.addSubview(emailLabel)
@@ -126,6 +170,59 @@ extension EditProfileViewController {
         view.addSubview(emailTextFieldTitle)
         view.addSubview(saveButton)
     }
+    
+    func setupTargets() {
+        let tapChangeImageContainer = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
+        let tapChangeImage = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
+        let tapViewGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        
+        iconContainer.addGestureRecognizer(tapChangeImageContainer)
+        iconImageView.addGestureRecognizer(tapChangeImage)
+        view.addGestureRecognizer(tapViewGesture)
+    }
+    
+    func uploadUserDefaults() {
+        if let name = UserDefaults.standard.string(forKey: "name") {
+            nameTextField.text = name
+            nameLabel.text = name
+        } else {
+            nameLabel.text = "Tiffany"
+            nameTextField.text = "Tiffany"
+        }
+        if let email = UserDefaults.standard.string(forKey: "email") {
+            emailTextField.text = email
+            emailLabel.text = email
+            
+        } else {
+            emailTextField.text = "Tiffany007@gmail.com"
+            emailLabel.text = "Tiffany007@gmail.com"
+        }
+        
+        guard let data = UserDefaults.standard.data(forKey: "avatar") else {
+            userImageView.image = UIImage(named: "ProfileImageSet/avatar")
+            return
+        }
+        let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+        userImageView.image = UIImage(data: decoded)
+        
+    }
+    
+    func saveNameToUserDefaults() {
+        let name = nameTextField.text
+        UserDefaults.standard.set(name, forKey: "name")
+    }
+    
+    func saveEmailToUserDefaults() {
+        let email = emailTextField.text
+        UserDefaults.standard.set(email, forKey: "email")
+    }
+    
+    func saveAvatarToUserDefaults() {
+        guard let data = userImageView.image?.jpegData(compressionQuality: 0.5) else { return }
+        let encoded = try! PropertyListEncoder().encode(data)
+        UserDefaults.standard.set(encoded, forKey: "avatar")
+    }
+    
     // MARK: - Constraints
     func setupConstraints() {
         userImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -140,6 +237,7 @@ extension EditProfileViewController {
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         
         userImageView.layer.cornerRadius = 60.0
+        iconContainer.layer.cornerRadius = 20.0
         nameTextField.layer.cornerRadius = 30.0
         emailTextField.layer.cornerRadius = 30.0
         saveButton.layer.cornerRadius = 30.0
@@ -152,11 +250,13 @@ extension EditProfileViewController {
             userImageView.widthAnchor.constraint(equalToConstant: 120.0),
             userImageView.heightAnchor.constraint(equalToConstant: 120.0),
             
-            iconContainer.heightAnchor.constraint(equalToConstant: 20.0),
-            iconContainer.widthAnchor.constraint(equalToConstant: 20.0),
+            iconContainer.heightAnchor.constraint(equalToConstant: 40.0),
+            iconContainer.widthAnchor.constraint(equalToConstant: 40.0),
             iconContainer.bottomAnchor.constraint(equalTo: userImageView.bottomAnchor),
             iconContainer.trailingAnchor.constraint(equalTo: userImageView.trailingAnchor),
             
+            iconImageView.heightAnchor.constraint(equalToConstant: 15.0),
+            iconImageView.widthAnchor.constraint(equalToConstant: 15.0),
             iconImageView.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor),
             

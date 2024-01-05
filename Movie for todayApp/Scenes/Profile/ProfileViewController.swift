@@ -72,6 +72,11 @@ class ProfileViewController: UIViewController {
         
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        uploadUserDefaults()
+    }
+    
 }
 // MARK: - Display logic
 extension ProfileViewController: ProfileDisplayLogic {
@@ -157,6 +162,26 @@ extension ProfileViewController {
         self.models.append(.init(title: nil, options: [
             .logout(model: logOut)
         ]))
+    }
+    // MARK: - UserDefaults
+    func uploadUserDefaults() {
+        let name = UserDefaults.standard.string(forKey: "name") ?? "Tiffany"
+        let email = UserDefaults.standard.string(forKey: "email") ?? "Tiffany007@gmail.com"
+        var image: UIImage?
+        if let imageData = UserDefaults.standard.data(forKey: "avatar") {
+            let decoded = try! PropertyListDecoder().decode(Data.self, from: imageData)
+            image = UIImage(data: decoded)
+        } else {
+            image = UIImage(named: "ProfileImageSet/avatar")
+        }
+        
+        let header = ProfileHeaderModel(image: image, name: name, email: email, handler: {
+            print ("Pass to Edit Profile screen")
+            self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
+        })
+        self.models[0] = ProfileSection(title: nil, options: [
+            .header(model: header)
+        ])
     }
     
     private func setupView() {
