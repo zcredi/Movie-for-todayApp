@@ -53,7 +53,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         searchViewController.view.backgroundColor = .gray
         treeViewController.view.backgroundColor = .cyan
-        profileViewController.view.backgroundColor = .blue
         
         let homeNavigationController = CustomNavigationController(rootViewController: homeViewController)
         let searchNavigationController = CustomNavigationController(rootViewController: searchViewController)
