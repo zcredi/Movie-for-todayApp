@@ -21,9 +21,11 @@ class RecentMovieCell: UICollectionViewCell {
         return view
     }()
     
-    let movieImage: UIImageView = {
+    private lazy var movieImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "questionmark.app.fill")
+        imageView.backgroundColor = .systemBlue
+        //imageView.tintColor = .systemBlue
+        //imageView.image = UIImage(systemName: "network")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         return imageView
@@ -74,9 +76,18 @@ class RecentMovieCell: UICollectionViewCell {
 //            $0.translatesAutoresizingMaskIntoConstraints = false
 //            self.addSubview($0)
 //        }
+        self.clipsToBounds = true
         addSubviews(containerFilm, movieImage)
+        containerFilm.translatesAutoresizingMaskIntoConstraints = false
+        movieImage.translatesAutoresizingMaskIntoConstraints = false
         containerFilm.addSubviews(movieName, genre)
         movieImage.addSubviews(ratingBlur, ratingImage, ratingLabel)
+    }
+    
+   public func viewForData () {
+        self.containerFilm = containerFilm
+        self.movieImage = movieImage
+        
     }
     
     func setupConstraints() {
@@ -90,6 +101,10 @@ class RecentMovieCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             movieImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            movieImage.widthAnchor.constraint(equalToConstant: 200),
+            movieImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            //movieImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            movieImage.heightAnchor.constraint(equalToConstant: 150),
             movieImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             movieImage.bottomAnchor.constraint(equalTo: containerFilm.topAnchor)
         ])

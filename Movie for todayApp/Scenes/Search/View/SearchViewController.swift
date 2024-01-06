@@ -83,27 +83,18 @@ class SearchViewController: UIViewController {
         return button
     }()
     
-    let recentMovieCell: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(RecentMovieCell.self, forCellWithReuseIdentifier: RecentMovieCell.identifier)
-        collectionView.backgroundColor = .white
-        return collectionView
-    }()
+    let recentMovieView = RecentMovieView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // view.backgroundColor = .primaryDark
-//        createCompositionalLayout()
-//        horizontalSection()
         setupUI()
         setupConstraints()
-//        collectionView(recentMovieCell, cellForItemAt: 1)
-//        collectionViewLayout(recentMovieCell, numberOfItemsInSection: 1)
     }
     
+//
+    
     private func setupUI() {
-        [searchField, upcomingMovie, recentMovieCell, movieImageView, movieName, year, duration, genre, typeOfMovie, seeAllButton].forEach {
+        [searchField, upcomingMovie, recentMovieView, movieImageView, movieName, year, duration, genre, typeOfMovie, seeAllButton].forEach {
            $0.translatesAutoresizingMaskIntoConstraints = false
            view.addSubview($0)
        }
@@ -112,15 +103,11 @@ class SearchViewController: UIViewController {
     func setupConstraints () {
         
         NSLayoutConstraint.activate([
-//            recent.topAnchor.constraint(equalTo: view.topAnchor,constant: 340),
-//            recent.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-//            recent.widthAnchor.constraint(equalToConstant: 360),
-//            recent.heightAnchor.constraint(equalToConstant: 310),
 
-            recentMovieCell.topAnchor.constraint(equalTo: view.topAnchor,constant: 450),
-            recentMovieCell.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            recentMovieCell.widthAnchor.constraint(equalToConstant: 360),
-            recentMovieCell.heightAnchor.constraint(equalToConstant: 310),
+            recentMovieView.topAnchor.constraint(equalTo: view.topAnchor,constant: 450),
+            recentMovieView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            recentMovieView.widthAnchor.constraint(equalToConstant: 360),
+            recentMovieView.heightAnchor.constraint(equalToConstant: 310),
             
             searchField.topAnchor.constraint(equalTo: view.topAnchor, constant: 110),
             searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
@@ -149,14 +136,14 @@ class SearchViewController: UIViewController {
             typeOfMovie.topAnchor.constraint(equalTo: duration.bottomAnchor, constant: 13),
             typeOfMovie.leadingAnchor.constraint(equalTo: genre.trailingAnchor, constant: 15),
             
-            seeAllButton.bottomAnchor.constraint(equalTo: recentMovieCell.topAnchor, constant: -20),
+            seeAllButton.bottomAnchor.constraint(equalTo: recentMovieView.topAnchor, constant: -20),
             seeAllButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
 
             
             
         ])
     }
-    
+    // collection
 //    private func createCompositionalLayout() -> UICollectionViewLayout {
 //
 //        let layouts = UICollectionViewCompositionalLayout.init { sectionIndex, environment in
@@ -182,19 +169,19 @@ class SearchViewController: UIViewController {
 //           // Вернуть количество элементов
 //        return 3
 //       }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentMovieCell.identifier, for: indexPath) as! RecentMovieCell
-        // Конфигурируем ячейку
-//        cell.label.text = dataArray[indexPath.item]
-        cell.movieImage.image = UIImage(systemName: "questionmark.app.fill")
-        cell.genre.text = "Action"
-        cell.movieName.text = "Spider man"
-        return cell
-    }
-    func collectionViewLayout(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentMovieCell.identifier, for: indexPath) as! RecentMovieCell
+//        // Конфигурируем ячейку
+////        cell.label.text = dataArray[indexPath.item]
+//        cell.movieImage.image = UIImage(systemName: "questionmark.app.fill")
+//        cell.genre.text = "Action"
+//        cell.movieName.text = "Spider man"
+//        return cell
+//    }
+//    func collectionViewLayout(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 2
+//    }
     
-    
+    // делегат
     
 }
