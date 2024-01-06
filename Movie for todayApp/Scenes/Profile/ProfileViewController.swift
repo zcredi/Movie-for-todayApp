@@ -111,7 +111,9 @@ extension ProfileViewController {
         let header: ProfileHeaderModel =
             .init(image: UIImage(named: "ProfileImageSet/avatar"), name: "Tiffany", email: "Tiffany007@gmail.com") {
                 print ("Pass to Edit Profile screen")
-                self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
+                let editProfileVC = EditProfileViewController()
+                editProfileVC.delegate = self
+                self.navigationController?.pushViewController(editProfileVC, animated: true)
             }
         // Settings section items
         // General
@@ -165,6 +167,7 @@ extension ProfileViewController {
     }
     // MARK: - UserDefaults
     func uploadUserDefaults() {
+        print("upload user defaults profile VC")
         let name = UserDefaults.standard.string(forKey: "name") ?? "Tiffany"
         let email = UserDefaults.standard.string(forKey: "email") ?? "Tiffany007@gmail.com"
         var image: UIImage?
@@ -177,11 +180,14 @@ extension ProfileViewController {
         
         let header = ProfileHeaderModel(image: image, name: name, email: email, handler: {
             print ("Pass to Edit Profile screen")
-            self.navigationController?.pushViewController(EditProfileViewController(), animated: true)
+            let editProfileVC = EditProfileViewController()
+            editProfileVC.delegate = self
+            self.navigationController?.pushViewController(editProfileVC, animated: true)
         })
         self.models[0] = ProfileSection(title: nil, options: [
             .header(model: header)
         ])
+        tableView.reloadData()
     }
     
     private func setupView() {

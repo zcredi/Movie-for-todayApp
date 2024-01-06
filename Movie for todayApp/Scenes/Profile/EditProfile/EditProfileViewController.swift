@@ -20,6 +20,8 @@ class EditProfileViewController: UIViewController {
     private lazy var emailTextFieldTitle = createTextFieldLabel(text: "Email")
     private lazy var saveButton = createSaveButton()
     
+    weak var delegate: ProfileViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +36,10 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        //delegate?.uploadUserDefaults()
     }
-
+  
 }
 //MARK: - Actions, UIImagePicker
 extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -147,6 +151,7 @@ extension EditProfileViewController {
         let button = UIButton()
         button.setTitle("Save Changes", for: .normal)
         button.backgroundColor = .primaryBlueAccent
+        button.addTarget(self, action: #selector(saveChangesButtonTapped), for: .touchUpInside)
         return button
     }
     // MARK: - Setup View / Actions
@@ -179,6 +184,10 @@ extension EditProfileViewController {
         iconContainer.addGestureRecognizer(tapChangeImageContainer)
         iconImageView.addGestureRecognizer(tapChangeImage)
         view.addGestureRecognizer(tapViewGesture)
+    }
+    
+    @objc func saveChangesButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     func uploadUserDefaults() {
