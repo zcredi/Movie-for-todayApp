@@ -17,6 +17,9 @@
 		4094C97D2B3F4A670067F5D1 /* HomeNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C97C2B3F4A670067F5D1 /* HomeNavigationBar.swift */; };
 		4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C97E2B3F55C70067F5D1 /* UISearchBar+App.swift */; };
 		4094C9812B3F5B160067F5D1 /* UIBlurEffect+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */; };
+		6C7999C02B49814900761B6C /* Animation 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C7999BD2B49814900761B6C /* Animation 2.json */; };
+		6C7999C12B49814900761B6C /* Animation 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C7999BE2B49814900761B6C /* Animation 3.json */; };
+		6C7999C22B49814900761B6C /* Animation 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C7999BF2B49814900761B6C /* Animation 1.json */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF42B39FF14000458BD /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF32B39FF14000458BD /* PopularViewController.swift */; };
 		86157FF62B39FF22000458BD /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF52B39FF22000458BD /* MovieListViewController.swift */; };
@@ -42,9 +45,6 @@
 		869482FA2B46D8A7008144CB /* SliderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869482F92B46D8A7008144CB /* SliderData.swift */; };
 		869482FC2B46D8B8008144CB /* SliderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869482FB2B46D8B8008144CB /* SliderItem.swift */; };
 		869482FF2B46D8D7008144CB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 869482FE2B46D8D7008144CB /* Lottie */; };
-		869483052B46D92A008144CB /* Animation 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 869483022B46D92A008144CB /* Animation 1.json */; };
-		869483062B46D92A008144CB /* Animation 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 869483032B46D92A008144CB /* Animation 3.json */; };
-		869483072B46D92A008144CB /* Animation 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 869483042B46D92A008144CB /* Animation 2.json */; };
 		86968F0B2B4875EC0060D4C4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 86968F0A2B4875EC0060D4C4 /* Kingfisher */; };
 		86968F142B4876560060D4C4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86968F0E2B4876560060D4C4 /* NetworkManager.swift */; };
 		86968F152B4876560060D4C4 /* URLRequestGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86968F0F2B4876560060D4C4 /* URLRequestGenerator.swift */; };
@@ -68,6 +68,9 @@
 		4094C97C2B3F4A670067F5D1 /* HomeNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBar.swift; sourceTree = "<group>"; };
 		4094C97E2B3F55C70067F5D1 /* UISearchBar+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+App.swift"; sourceTree = "<group>"; };
 		4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBlurEffect+App.swift"; sourceTree = "<group>"; };
+		6C7999BD2B49814900761B6C /* Animation 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 2.json"; sourceTree = "<group>"; };
+		6C7999BE2B49814900761B6C /* Animation 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 3.json"; sourceTree = "<group>"; };
+		6C7999BF2B49814900761B6C /* Animation 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 1.json"; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF32B39FF14000458BD /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		86157FF52B39FF22000458BD /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -94,9 +97,6 @@
 		869482F72B46D898008144CB /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		869482F92B46D8A7008144CB /* SliderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderData.swift; sourceTree = "<group>"; };
 		869482FB2B46D8B8008144CB /* SliderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderItem.swift; sourceTree = "<group>"; };
-		869483022B46D92A008144CB /* Animation 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation 1.json"; path = "../../../../../Downloads/Animation 1.json"; sourceTree = "<group>"; };
-		869483032B46D92A008144CB /* Animation 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation 3.json"; path = "../../../../../Downloads/Animation 3.json"; sourceTree = "<group>"; };
-		869483042B46D92A008144CB /* Animation 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "Animation 2.json"; path = "../../../../../Downloads/Animation 2.json"; sourceTree = "<group>"; };
 		86968F0E2B4876560060D4C4 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		86968F0F2B4876560060D4C4 /* URLRequestGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestGenerator.swift; sourceTree = "<group>"; };
 		86968F112B4876560060D4C4 /* HomeFilm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFilm.swift; sourceTree = "<group>"; };
@@ -354,9 +354,9 @@
 		869483012B46D91C008144CB /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				869483022B46D92A008144CB /* Animation 1.json */,
-				869483042B46D92A008144CB /* Animation 2.json */,
-				869483032B46D92A008144CB /* Animation 3.json */,
+				6C7999BF2B49814900761B6C /* Animation 1.json */,
+				6C7999BD2B49814900761B6C /* Animation 2.json */,
+				6C7999BE2B49814900761B6C /* Animation 3.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -475,13 +475,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				86778CE22B3AE0CB00E548F1 /* Montserrat-Regular.ttf in Resources */,
-				869483052B46D92A008144CB /* Animation 1.json in Resources */,
-				869483072B46D92A008144CB /* Animation 2.json in Resources */,
+				6C7999C22B49814900761B6C /* Animation 1.json in Resources */,
 				8681669C2B3969D5007FDF8F /* LaunchScreen.storyboard in Resources */,
 				86778CE32B3AE0CB00E548F1 /* Montserrat-Medium.ttf in Resources */,
 				86778CE42B3AE0CB00E548F1 /* Montserrat-SemiBold.ttf in Resources */,
+				6C7999C02B49814900761B6C /* Animation 2.json in Resources */,
 				868166992B3969D5007FDF8F /* Assets.xcassets in Resources */,
-				869483062B46D92A008144CB /* Animation 3.json in Resources */,
+				6C7999C12B49814900761B6C /* Animation 3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
