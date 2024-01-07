@@ -30,7 +30,7 @@ enum HomeCategoryTag: String, CaseIterable {
 
 
 
-enum HomeCategoryTag1: String, CaseIterable {
+enum MovieListsCategoryTag: String, CaseIterable {
     case anime = "Anime"
     case biography = "Biography"
     case actionMovie = "Action Movie"

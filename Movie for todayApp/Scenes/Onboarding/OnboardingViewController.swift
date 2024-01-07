@@ -206,7 +206,7 @@ final class OnboardingViewController: UIViewController {
         } else {
             let vc = CustomTabBarController()
             vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            present(vc, animated: false)
         }
     }
     
@@ -220,7 +220,7 @@ final class OnboardingViewController: UIViewController {
     @objc func skipButtonTapped() {
         let vc = CustomTabBarController()
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        present(vc, animated: false)
     }
 }
 

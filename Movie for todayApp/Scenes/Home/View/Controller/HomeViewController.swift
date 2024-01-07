@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
         let layout = createLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.allowsMultipleSelection = false
+        cv.delegate = self
         cv.backgroundColor = .clear
         return cv
     }()
@@ -44,13 +45,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .primaryDark
         selectedTagIndexPath = IndexPath(row: 0, section: 1)
-        setupCollectionView()
-        dispatchGroup.enter()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        dispatchGroup.enter()
         homeViewModel.fetchFilms(genre: "аниме") { [weak self] result in
             switch result {
             case .success(let success):
@@ -76,6 +76,7 @@ class HomeViewController: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
+            self.setupCollectionView()
             self.createDataSource()
             self.createDataSourceSVP()
             self.configureDataSource()
@@ -132,7 +133,10 @@ class HomeViewController: UIViewController {
                 section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 20, bottom: 20, trailing: 20)
                 return section
             case .mostPopular:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .absolute(200))
+                let itemSize = NSCollectionLayoutSize(
+                    widthDimension: .absolute(150),
+                    heightDimension: .absolute(200)
+                )
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
@@ -166,7 +170,7 @@ class HomeViewController: UIViewController {
                     return UICollectionViewCell()
                 }
                 cell.delegate = self
-                cell.configureCell(self.popularCategoryTagArray[indexPath.row])
+                cell.configureCell(self.popularCategoryTagArray[indexPath.row].rawValue)
                 if indexPath == self.selectedTagIndexPath {
                     cell.toggleButtonState()
                 } else {
@@ -255,8 +259,7 @@ extension HomeViewController: HomeCategoryTagPressed {
 
         // Process the previously selected cell
         if let previousSelectedIndexPath = selectedTagIndexPath,
-           let previousCell = homeCollectionView.cellForItem(at: previousSelectedIndexPath) as? HomeCategoryTagCollectionViewCell,
-           currentSelectedIndexPath != previousSelectedIndexPath
+           let previousCell = homeCollectionView.cellForItem(at: previousSelectedIndexPath) as? HomeCategoryTagCollectionViewCell
         {
             previousCell.resetButtonState()
         }
@@ -286,6 +289,24 @@ extension HomeViewController: HomeCategoryTagPressed {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
+
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        switch section {
+        case .mostPopular:
+            let vc = PopularMovieViewController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case .popularCategory:
+            let vc = MovieListsViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
+    }
+}
+
 
 extension HomeViewController: HomeFavoriteButtonPressed {
     func favoriteButtonPressed() {
