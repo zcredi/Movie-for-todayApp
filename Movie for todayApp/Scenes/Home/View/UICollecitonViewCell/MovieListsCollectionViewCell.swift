@@ -4,6 +4,7 @@ class MovieListsCollectionViewCell: UICollectionViewCell {
     static let identifier = "\(MovieListsCollectionViewCell.self)"
     private lazy var filmImage: UIImageView = {
         let image = UIImageView()
+        image.clipsToBounds = true
         image.backgroundColor = .red
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 12

@@ -2,7 +2,7 @@ import Foundation
 
 class URLRequestGenerator {
     private let baseURL = "https://api.kinopoisk.dev/v1.4/"
-    private let apiKey = "CA0Y6V3-4JPMCKW-PTSQ135-YPKXT4X"
+    private let apiKey = "1TMH0NP-45VMCVB-J4Y4RF6-TZQ7ZW7"
     
     // CA0Y6V3-4JPMCKW-PTSQ135-YPKXT4X
     // 1TMH0NP-45VMCVB-J4Y4RF6-TZQ7ZW7
