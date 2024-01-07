@@ -92,20 +92,20 @@ class RecentMovieCell: UICollectionViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            containerFilm.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            containerFilm.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            containerFilm.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            containerFilm.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerFilm.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerFilm.trailingAnchor.constraint(equalTo: trailingAnchor),
             containerFilm.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
-            movieImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            movieImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            movieImage.widthAnchor.constraint(equalToConstant: 200),
-            movieImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            movieImage.topAnchor.constraint(equalTo: topAnchor),
+            movieImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            //movieImage.widthAnchor.constraint(equalToConstant: 200),
+            //movieImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             //movieImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            movieImage.heightAnchor.constraint(equalToConstant: 150),
-            movieImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            //movieImage.heightAnchor.constraint(equalToConstant: 150),
+            movieImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             movieImage.bottomAnchor.constraint(equalTo: containerFilm.topAnchor)
         ])
         

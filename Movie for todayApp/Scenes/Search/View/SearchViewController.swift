@@ -91,7 +91,7 @@ class SearchViewController: UIViewController {
         setupConstraints()
     }
     
-//
+
     
     private func setupUI() {
         [searchField, upcomingMovie, recentMovieView, movieImageView, movieName, year, duration, genre, typeOfMovie, seeAllButton].forEach {
@@ -143,45 +143,6 @@ class SearchViewController: UIViewController {
             
         ])
     }
-    // collection
-//    private func createCompositionalLayout() -> UICollectionViewLayout {
-//
-//        let layouts = UICollectionViewCompositionalLayout.init { sectionIndex, environment in
-//            self.horizontalSection ()
-//        }
-//        return layouts
-//    }
-    
-//    func horizontalSection() -> NSCollectionLayoutSection {
-//
-//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
-//                                              heightDimension: .fractionalHeight(1.1))
-//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.1),
-//                                               heightDimension: .estimated(200))
-//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-//                                                       subitems: [item])
-//        let section = NSCollectionLayoutSection(group: group)
-//        section.orthogonalScrollingBehavior = .continuous
-//        return section
-//    }
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//           // Вернуть количество элементов
-//        return 3
-//       }
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentMovieCell.identifier, for: indexPath) as! RecentMovieCell
-//        // Конфигурируем ячейку
-////        cell.label.text = dataArray[indexPath.item]
-//        cell.movieImage.image = UIImage(systemName: "questionmark.app.fill")
-//        cell.genre.text = "Action"
-//        cell.movieName.text = "Spider man"
-//        return cell
-//    }
-//    func collectionViewLayout(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 2
-//    }
-    
-    // делегат
+
     
 }
