@@ -8,7 +8,10 @@ class HomeCategoryTagCollectionViewCell: UICollectionViewCell {
     weak var delegate: HomeCategoryTagPressed?
     static let identifier = "\(HomeCategoryTagCollectionViewCell.self)"
     private lazy var categoryButton: UIButton = {
-        let button = UIButton(title: "All", font: .systemFont(ofSize: 12), titleColor: .white)
+        let button = UIButton()
+        button.setTitle("All", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12)
+        button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(categoryButtonPressed(_:)), for: .touchUpInside)
@@ -30,8 +33,8 @@ class HomeCategoryTagCollectionViewCell: UICollectionViewCell {
     }
     
     
-    public func configureCell(_ title: String) {
-        categoryButton.setTitle(title, for: .normal)
+    public func configureCell(_ title: HomeCategoryTag) {
+        categoryButton.setTitle(title.rawValue, for: .normal)
     }
     
     public func resetButtonState() {
