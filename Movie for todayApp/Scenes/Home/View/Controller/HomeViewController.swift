@@ -50,8 +50,10 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard let selectedTagIndexPath else { return }
+        let currentCategory = popularCategoryTagArray[selectedTagIndexPath.row].genre
         dispatchGroup.enter()
-        homeViewModel.fetchFilms(genre: "аниме") { [weak self] result in
+        homeViewModel.fetchFilms(genre: currentCategory) { [weak self] result in
             switch result {
             case .success(let success):
                 self?.homeViewModel.popularFilms = success
@@ -310,6 +312,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: HomeFavoriteButtonPressed {
     func favoriteButtonPressed() {
-        print("Pressed!!!")
+        let vc = WishlistViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
