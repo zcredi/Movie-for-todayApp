@@ -83,7 +83,6 @@ class RecentMovieCell: UICollectionViewCell {
             movieImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             movieImage.leadingAnchor.constraint(equalTo: leadingAnchor),
             movieImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            //movieImage.bottomAnchor.constraint(equalTo: containerDescription.topAnchor),
         
             movieName.topAnchor.constraint(equalTo: containerDescription.topAnchor, constant: 10),
             movieName.leadingAnchor.constraint(equalTo: containerDescription.leadingAnchor, constant: 8),

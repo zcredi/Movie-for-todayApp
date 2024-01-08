@@ -46,7 +46,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func setupViewControllers() {
         let homeViewController = HomeViewController()
-        let searchViewController = SearchViewController()
+        let searchViewController = ResultViewController()
         //TODO: Change tree VC to actual VC
         let treeViewController = UIViewController()
         let profileViewController = ProfileViewController()
