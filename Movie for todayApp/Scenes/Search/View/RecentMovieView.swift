@@ -11,9 +11,9 @@ protocol RecentMovieProtocol: AnyObject {
     func selectItem (image: UIImageView, containerFilm: UIView)
     
 }
+
 class RecentMovieView: UIView {
 
-    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -21,7 +21,7 @@ class RecentMovieView: UIView {
         layout.minimumLineSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(RecentMovieCell.self, forCellWithReuseIdentifier: RecentMovieCell.identifier)
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -81,7 +81,7 @@ extension RecentMovieView: UICollectionViewDelegate {
 extension RecentMovieView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentMovieCell.identifier, for: indexPath) as! RecentMovieCell
-        cell.viewForData() // возможно надо будет фиксить
+       // cell.viewForData() // возможно надо будет фиксить
         return cell
     }
     

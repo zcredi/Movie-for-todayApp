@@ -10,12 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    
-    let recent = RecentMovieCell()
-    // MARK: - UI
-    
-    let searchField: UISearchTextField = {
-        
+    // MARK: - UI elements
+    private let recentMovieView = RecentMovieView()
+    private let upcomingMovie = MovieCardView()
+    private let searchField: UISearchTextField = {
         let search = UISearchTextField()
         search.layer.cornerRadius = 15
         search.leftView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
@@ -24,57 +22,31 @@ class SearchViewController: UIViewController {
         search.textColor = .white
         return search
     }()
-    let upcomingMovie: UILabel = {
-       let title = UILabel()
-        title.textColor = .white
-        title.font = .montserratSemiBold16()
-        title.text = "Upcoming Movie"
-        return title
-    }()
-    
-    let movieImageView: UIImageView = {
+    private let movieImageView: UIImageView = {
         let movieImage = UIImageView()
         movieImage.backgroundColor = .systemBlue
         movieImage.layer.cornerRadius = 15
         return movieImage
     }()
-    let movieName: UILabel = {
-        let title = UILabel()
-        title.font = .montserratSemiBold16()
-        title.textColor = .white
-        title.text = "Spider man"
-        title.numberOfLines = 1
-        return title
-    }()
-    let year: UILabel = {
-        let title = UILabel()
-        title.text = "2015"
-        title.textColor = .lightGray
-        title.font = .montserratMedium12()
-        return title
-    }()
-    let duration: UILabel = {
-        let title = UILabel()
-        title.textColor = .lightGray
-        title.text = "140 Minutes"
-        return title
-    }()
-    let genre: UILabel = {
-        let title = UILabel()
-        title.textColor = .lightGray
-        title.text = "Action"
-        return title
-    }()
+    private let recentMovie = UILabel(text: "Recent Movie", font: .montserratSemiBold16(), textColor: .white)
+    private let upcomingMovie = UILabel(text: "Upcoming Movie", font: .montserratSemiBold16(), textColor: .white)
+    private let movieName = UILabel(text: "Spider Man", font: .montserratSemiBold16(), textColor: .white)
+    private let year = UILabel(text: "2015", font: .montserratMedium12(), textColor: .lightGray)
+    private let duration = UILabel(text: "140 minutes", font: .montserratMedium12(), textColor: .lightGray)
+    private let genre = UILabel(text: "Action", font: .montserratMedium12(), textColor: .lightGray)
+    private let typeOfMovie = UILabel(text: "Movie", font: .montserratMedium12(), textColor: .lightGray)
     
-    let typeOfMovie: UILabel = {
-        let title = UILabel()
-        title.font = .montserratMedium12()
-        title.textColor = .lightGray
-        title.text = "Movie"
-        return title
-    }()
+    private lazy var ratingBlur: VisualBlurEffect = {
+         let blur = VisualBlurEffect(style: .systemUltraThinMaterialDark)
+         blur.layer.cornerRadius = 12
+         blur.clipsToBounds = true
+         return blur
+     }()
+     
+    private lazy var ratingImage = UIImageView(image: UIImage(systemName: "star.fill")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal))
+    private lazy var ratingLabel = UILabel(text: "4.5", font: .systemFont(ofSize: 12), textColor: .systemOrange)
     
-    let seeAllButton: UIButton = {
+    private let seeAllButton: UIButton = {
         let button = UIButton()
         button.setTitle("See All", for: .normal)
         button.setTitleColor(.cyan, for: .normal)
@@ -82,29 +54,27 @@ class SearchViewController: UIViewController {
         button.backgroundColor = .clear
         return button
     }()
-    
-    let recentMovieView = RecentMovieView()
-    
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
     }
-    
-
-    
+    // MARK: Methods
     private func setupUI() {
-        [searchField, upcomingMovie, recentMovieView, movieImageView, movieName, year, duration, genre, typeOfMovie, seeAllButton].forEach {
+        
+        [searchField, upcomingMovie, recentMovie, recentMovieView, movieImageView, movieName, year, duration, genre, typeOfMovie, seeAllButton].forEach {
            $0.translatesAutoresizingMaskIntoConstraints = false
            view.addSubview($0)
        }
+        movieImageView.addSubviews(ratingImage, ratingLabel, ratingBlur)
+
     }
-    
-    func setupConstraints () {
-        
+   private func setupConstraints () {
         NSLayoutConstraint.activate([
 
-            recentMovieView.topAnchor.constraint(equalTo: view.topAnchor,constant: 450),
+            recentMovieView.topAnchor.constraint(equalTo: view.topAnchor,constant: 550),
+            recentMovieView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             recentMovieView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             recentMovieView.widthAnchor.constraint(equalToConstant: 360),
             recentMovieView.heightAnchor.constraint(equalToConstant: 310),
@@ -114,10 +84,13 @@ class SearchViewController: UIViewController {
             searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             
             upcomingMovie.bottomAnchor.constraint(equalTo: movieImageView.topAnchor, constant: -10),
-            upcomingMovie.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            upcomingMovie.leadingAnchor.constraint(equalTo: movieImageView.leadingAnchor),
+            
+            recentMovie.bottomAnchor.constraint(equalTo: recentMovieView.topAnchor, constant: -20),
+            recentMovie.leadingAnchor.constraint(equalTo: recentMovieView.leadingAnchor),
             
             movieImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 250),
-            movieImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            movieImageView.leadingAnchor.constraint(equalTo: recentMovieView.leadingAnchor),
             movieImageView.widthAnchor.constraint(equalToConstant: 110),
             movieImageView.heightAnchor.constraint(equalToConstant: 150),
             
@@ -136,11 +109,21 @@ class SearchViewController: UIViewController {
             typeOfMovie.topAnchor.constraint(equalTo: duration.bottomAnchor, constant: 13),
             typeOfMovie.leadingAnchor.constraint(equalTo: genre.trailingAnchor, constant: 15),
             
-            seeAllButton.bottomAnchor.constraint(equalTo: recentMovieView.topAnchor, constant: -20),
-            seeAllButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
-
+            seeAllButton.bottomAnchor.constraint(equalTo: recentMovieView.topAnchor, constant: -15),
+            seeAllButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             
-            
+            ratingBlur.heightAnchor.constraint(equalToConstant: 30),
+            ratingBlur.widthAnchor.constraint(equalToConstant: 55),
+            ratingBlur.topAnchor.constraint(equalTo: movieImageView.topAnchor, constant: 8),
+            ratingBlur.trailingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: -8),
+       
+            ratingImage.heightAnchor.constraint(equalToConstant: 16),
+            ratingImage.widthAnchor.constraint(equalToConstant: 16),
+            ratingImage.centerYAnchor.constraint(equalTo: ratingBlur.centerYAnchor),
+            ratingImage.leadingAnchor.constraint(equalTo: ratingBlur.leadingAnchor, constant: 8),
+  
+            ratingLabel.centerYAnchor.constraint(equalTo: ratingBlur.centerYAnchor),
+            ratingLabel.trailingAnchor.constraint(equalTo: ratingBlur.trailingAnchor, constant: -8),
         ])
     }
 

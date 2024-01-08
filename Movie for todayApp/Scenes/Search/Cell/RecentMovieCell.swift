@@ -13,7 +13,7 @@ class RecentMovieCell: UICollectionViewCell {
     
     // MARK: - UI
     
-    private lazy var containerFilm: UIView = {
+    private lazy var containerDescription: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 12
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -24,30 +24,15 @@ class RecentMovieCell: UICollectionViewCell {
     private lazy var movieImage: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemBlue
-        //imageView.tintColor = .systemBlue
-        //imageView.image = UIImage(systemName: "network")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         return imageView
     }()
         
-    let movieName: UILabel = {
-        let nameLabel = UILabel()
-        nameLabel.font = .montserratSemiBold14()
-        nameLabel.text = "Spider man"
-        nameLabel.textColor = .black
-        return nameLabel
-    }()
+   private lazy var movieName = UILabel(text: "Spider Man", font: UIFont.montserratMedium28(), textColor: .lightGray)
+   private lazy var genre = UILabel(text: "Action1", font: UIFont.montserratMedium28(), textColor: .lightGray)
     
-    let genre: UILabel = {
-        let genreLabel = UILabel()
-        genreLabel.font = .montserratMedium10()
-        genreLabel.text = "Action"
-        genreLabel.textColor = .lightGray
-        return genreLabel
-    }()
-    
-    private lazy var ratingBlur: VisualBlurEffect = {
+   private lazy var ratingBlur: VisualBlurEffect = {
         let blur = VisualBlurEffect(style: .systemUltraThinMaterialDark)
         blur.layer.cornerRadius = 12
         blur.clipsToBounds = true
@@ -72,70 +57,52 @@ class RecentMovieCell: UICollectionViewCell {
     
     
     func setupView() {
-//        [ratingBlur,ratingImage,ratingLabel,descriptionContainer,movieImage].forEach {
-//            $0.translatesAutoresizingMaskIntoConstraints = false
-//            self.addSubview($0)
-//        }
-        self.clipsToBounds = true
-        addSubviews(containerFilm, movieImage)
-        containerFilm.translatesAutoresizingMaskIntoConstraints = false
+
+        self.clipsToBounds = false
+        addSubviews(containerDescription, movieImage)
+        containerDescription.translatesAutoresizingMaskIntoConstraints = false
         movieImage.translatesAutoresizingMaskIntoConstraints = false
-        containerFilm.addSubviews(movieName, genre)
+        containerDescription.addSubviews(movieName, genre)
         movieImage.addSubviews(ratingBlur, ratingImage, ratingLabel)
     }
     
    public func viewForData () {
-        self.containerFilm = containerFilm
+        self.containerDescription = containerDescription
         self.movieImage = movieImage
         
     }
     
-    func setupConstraints() {
+   private func setupConstraints() {
         NSLayoutConstraint.activate([
-            containerFilm.bottomAnchor.constraint(equalTo: bottomAnchor),
-            containerFilm.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerFilm.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerFilm.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        NSLayoutConstraint.activate([
-            movieImage.topAnchor.constraint(equalTo: topAnchor),
+            containerDescription.topAnchor.constraint(equalTo: movieImage.bottomAnchor),
+            containerDescription.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerDescription.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerDescription.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerDescription.heightAnchor.constraint(equalToConstant: 60),
+      
+            movieImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             movieImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            //movieImage.widthAnchor.constraint(equalToConstant: 200),
-            //movieImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            //movieImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            //movieImage.heightAnchor.constraint(equalToConstant: 150),
             movieImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            movieImage.bottomAnchor.constraint(equalTo: containerFilm.topAnchor)
-        ])
+            //movieImage.bottomAnchor.constraint(equalTo: containerDescription.topAnchor),
         
-        NSLayoutConstraint.activate([
-            movieName.topAnchor.constraint(equalTo: containerFilm.topAnchor, constant: 10),
-            movieName.leadingAnchor.constraint(equalTo: containerFilm.leadingAnchor, constant: 8),
-            movieName.trailingAnchor.constraint(equalTo: containerFilm.trailingAnchor, constant: -8)
-        ])
-        
-        NSLayoutConstraint.activate([
-            genre.bottomAnchor.constraint(equalTo: containerFilm.bottomAnchor, constant: -8),
-            genre.leadingAnchor.constraint(equalTo: containerFilm.leadingAnchor, constant: 8),
-            genre.trailingAnchor.constraint(equalTo: containerFilm.trailingAnchor, constant: -8)
-        ])
-        
-        NSLayoutConstraint.activate([
+            movieName.topAnchor.constraint(equalTo: containerDescription.topAnchor, constant: 10),
+            movieName.leadingAnchor.constraint(equalTo: containerDescription.leadingAnchor, constant: 8),
+            movieName.trailingAnchor.constraint(equalTo: containerDescription.trailingAnchor, constant: -8),
+     
+            genre.bottomAnchor.constraint(equalTo: containerDescription.bottomAnchor, constant: -8),
+            genre.leadingAnchor.constraint(equalTo: containerDescription.leadingAnchor, constant: 8),
+            genre.trailingAnchor.constraint(equalTo: containerDescription.trailingAnchor, constant: -8),
+   
             ratingBlur.heightAnchor.constraint(equalToConstant: 30),
             ratingBlur.widthAnchor.constraint(equalToConstant: 55),
             ratingBlur.topAnchor.constraint(equalTo: movieImage.topAnchor, constant: 8),
-            ratingBlur.trailingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: -8)
-        ])
-        
-        NSLayoutConstraint.activate([
+            ratingBlur.trailingAnchor.constraint(equalTo: movieImage.trailingAnchor, constant: -8),
+       
             ratingImage.heightAnchor.constraint(equalToConstant: 16),
             ratingImage.widthAnchor.constraint(equalToConstant: 16),
             ratingImage.centerYAnchor.constraint(equalTo: ratingBlur.centerYAnchor),
-            ratingImage.leadingAnchor.constraint(equalTo: ratingBlur.leadingAnchor, constant: 8)
-        ])
-        
-        NSLayoutConstraint.activate([
+            ratingImage.leadingAnchor.constraint(equalTo: ratingBlur.leadingAnchor, constant: 8),
+  
             ratingLabel.centerYAnchor.constraint(equalTo: ratingBlur.centerYAnchor),
             ratingLabel.trailingAnchor.constraint(equalTo: ratingBlur.trailingAnchor, constant: -8)
         ])
