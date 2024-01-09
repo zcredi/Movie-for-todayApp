@@ -26,9 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        UserDefaults.standard.set(true, forKey: "appLaunchedBefore")
 
 //!!!: Comment lines 29-30 after uncommenting lines 19-26
-        let mainVC = OnboardingViewController()
         window?.rootViewController = OnboardingViewController()
-        
         window?.makeKeyAndVisible()
     }
 }

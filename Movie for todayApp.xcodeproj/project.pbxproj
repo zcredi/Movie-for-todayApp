@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700DCC42B3F817100636EFE /* CustomNavigationController.swift */; };
+		3707E45A2B4C189C005D7CD5 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707E4592B4C189C005D7CD5 /* MovieDetailViewController.swift */; };
+		3707E45C2B4C18FA005D7CD5 /* DetailedTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707E45B2B4C18FA005D7CD5 /* DetailedTextViewController.swift */; };
+		3707E45E2B4DD7B2005D7CD5 /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707E45D2B4DD7B2005D7CD5 /* CastCell.swift */; };
 		403156AA2B497C7400636FEB /* Animation 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 403156A72B497C7400636FEB /* Animation 2.json */; };
 		403156AB2B497C7400636FEB /* Animation 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 403156A82B497C7400636FEB /* Animation 3.json */; };
 		403156AC2B497C7400636FEB /* Animation 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 403156A92B497C7400636FEB /* Animation 1.json */; };
@@ -29,7 +32,6 @@
 		4094C9812B3F5B160067F5D1 /* UIBlurEffect+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */; };
 		86157FF22B39FF06000458BD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF12B39FF06000458BD /* HomeViewController.swift */; };
 		86157FF82B39FF2E000458BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF72B39FF2E000458BD /* SearchViewController.swift */; };
-		86157FFA2B39FF35000458BD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FF92B39FF35000458BD /* DetailViewController.swift */; };
 		86157FFC2B39FF3E000458BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FFB2B39FF3E000458BD /* ProfileViewController.swift */; };
 		86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FFD2B39FF4B000458BD /* OnboardingViewController.swift */; };
 		861580002B39FF58000458BD /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86157FFF2B39FF58000458BD /* WishlistViewController.swift */; };
@@ -64,6 +66,9 @@
 
 /* Begin PBXFileReference section */
 		3700DCC42B3F817100636EFE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		3707E4592B4C189C005D7CD5 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		3707E45B2B4C18FA005D7CD5 /* DetailedTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTextViewController.swift; sourceTree = "<group>"; };
+		3707E45D2B4DD7B2005D7CD5 /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
 		403156A72B497C7400636FEB /* Animation 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 2.json"; sourceTree = "<group>"; };
 		403156A82B497C7400636FEB /* Animation 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 3.json"; sourceTree = "<group>"; };
 		403156A92B497C7400636FEB /* Animation 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 1.json"; sourceTree = "<group>"; };
@@ -85,7 +90,6 @@
 		4094C9802B3F5B160067F5D1 /* UIBlurEffect+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBlurEffect+App.swift"; sourceTree = "<group>"; };
 		86157FF12B39FF06000458BD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86157FF72B39FF2E000458BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		86157FF92B39FF35000458BD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		86157FFB2B39FF3E000458BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86157FFD2B39FF4B000458BD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		86157FFF2B39FF58000458BD /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
@@ -313,7 +317,9 @@
 		868166DC2B398153007FDF8F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				86157FF92B39FF35000458BD /* DetailViewController.swift */,
+				3707E4592B4C189C005D7CD5 /* MovieDetailViewController.swift */,
+				3707E45B2B4C18FA005D7CD5 /* DetailedTextViewController.swift */,
+				3707E45D2B4DD7B2005D7CD5 /* CastCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				4094C97A2B3F2D3B0067F5D1 /* SectionHeaderView.swift in Sources */,
 				403156B62B49ECB400636FEB /* PopularMovieCollectionViewCell.swift in Sources */,
 				869482F82B46D898008144CB /* SliderCell.swift in Sources */,
+				3707E45E2B4DD7B2005D7CD5 /* CastCell.swift in Sources */,
 				4094C97F2B3F55C70067F5D1 /* UISearchBar+App.swift in Sources */,
 				403156BE2B4AE65000636FEB /* WishlistCollectionViewCell.swift in Sources */,
 				4094C9492B3DDFAD0067F5D1 /* HomePopularCategoryCollectionViewCell.swift in Sources */,
@@ -552,7 +559,6 @@
 				86968F1F2B48777A0060D4C4 /* ImageCacheManager.swift in Sources */,
 				86157FFE2B39FF4B000458BD /* OnboardingViewController.swift in Sources */,
 				403156AE2B497DD800636FEB /* MovieListsViewController.swift in Sources */,
-				86157FFA2B39FF35000458BD /* DetailViewController.swift in Sources */,
 				868166E92B3981D3007FDF8F /* UILabel+App.swift in Sources */,
 				3700DCC52B3F817100636EFE /* CustomNavigationController.swift in Sources */,
 				86968F182B4876560060D4C4 /* ImageModel.swift in Sources */,
@@ -560,6 +566,8 @@
 				86968F152B4876560060D4C4 /* URLRequestGenerator.swift in Sources */,
 				403156B92B4A061D00636FEB /* DynamicFontLabel.swift in Sources */,
 				86968F202B48777A0060D4C4 /* HomeCategoryTag.swift in Sources */,
+				3707E45A2B4C189C005D7CD5 /* MovieDetailViewController.swift in Sources */,
+				3707E45C2B4C18FA005D7CD5 /* DetailedTextViewController.swift in Sources */,
 				4094C94B2B3DE06B0067F5D1 /* UIView+App.swift in Sources */,
 				403156B02B49844D00636FEB /* CustomNavigationBar.swift in Sources */,
 				869482FC2B46D8B8008144CB /* SliderItem.swift in Sources */,

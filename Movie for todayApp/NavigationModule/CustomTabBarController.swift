@@ -10,7 +10,7 @@ import UIKit
 class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     //MARK: - UI Elements
-    private var customTabBar: UIView!
+     var customTabBar: UIView!
     private var customTabBarItems: [CustomTabBarItem] = []
     
     //MARK: - Life Cycle
@@ -97,5 +97,9 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         selectedItem.isSelected = true
         selectedItem.animate(isSelected: true)
         selectedIndex = index
+    }
+    
+    func getCustomTabBarHeight() -> CGFloat {
+        return customTabBar.frame.height
     }
 }
