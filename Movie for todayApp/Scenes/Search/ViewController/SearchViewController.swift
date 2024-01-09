@@ -33,6 +33,7 @@ class SearchViewController: UIViewController {
         button.setTitleColor(.cyan, for: .normal)
         button.titleLabel?.font = .montserratMedium14()
         button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(seeAll), for: .touchUpInside)
         return button
     }()
     // MARK: Lifecycle
@@ -75,5 +76,9 @@ class SearchViewController: UIViewController {
         ])
     }
 
+    @objc func seeAll (){
+        let vc = ResultViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

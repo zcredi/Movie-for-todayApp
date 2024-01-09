@@ -1,5 +1,5 @@
 //
-//  ResultViewCollection.swift
+//  ActorsView.swift
 //  Movie for todayApp
 //
 //  Created by Дмитрий on 09.01.2024.
@@ -7,34 +7,32 @@
 
 import UIKit
 
-protocol ResultProtocol: AnyObject {
-    func selectItem (movieCard: UIView)
+protocol ActorsProtocol: AnyObject {
+    func selectItem (image: UIImageView, name: UILabel)
     
 }
 
-class ResultViewCollection: UIView {
-    
-    //MARK: UI
+class ActorsView: UIView {
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = .init(width: 350, height: 200)
-        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .horizontal
+        layout.itemSize = .init(width: 64, height: 64)
+        layout.minimumLineSpacing = 30
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(ResultViewCell.self, forCellWithReuseIdentifier: ResultViewCell.identifier)
-        collectionView.backgroundColor = .clear
+        collectionView.register(ActorsCell.self, forCellWithReuseIdentifier: ActorsCell.identifier)
+        collectionView.backgroundColor = .white
         return collectionView
     }()
     
-   weak var resultProtocol: ResultProtocol?
+   weak var actorProtocol: ActorsProtocol?
     
     
     //MARK: Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        collectionView.register(ResultViewCell.self, forCellWithReuseIdentifier: ResultViewCell.identifier)
+        collectionView.register(ActorsCell.self, forCellWithReuseIdentifier: ActorsCell.identifier)
         assignDelegate()
         setupUI()
         setupConstraints()
@@ -46,8 +44,8 @@ class ResultViewCollection: UIView {
     
     
     //MARK: Methods
-    func setDelegate(delegate: ResultProtocol?) {
-        resultProtocol = delegate
+    func setDelegate(delegate: ActorsProtocol?) {
+        actorProtocol = delegate
     }
     
     func assignDelegate() {
@@ -71,17 +69,19 @@ class ResultViewCollection: UIView {
         
     }
 }
-extension ResultViewCollection: UICollectionViewDelegate {
+extension ActorsView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5
     }
 
 }
-extension ResultViewCollection: UICollectionViewDataSource {
+extension ActorsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultViewCell.identifier, for: indexPath) as! ResultViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActorsCell.identifier, for: indexPath) as! ActorsCell
         // cell.viewForData() // возможно надо будет фиксить
         return cell
     }
     
 }
+
+
