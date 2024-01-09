@@ -33,8 +33,8 @@ class HomeCategoryTagCollectionViewCell: UICollectionViewCell {
     }
     
     
-    public func configureCell(_ title: HomeCategoryTag) {
-        categoryButton.setTitle(title.rawValue, for: .normal)
+    public func configureCell(_ title: String) {
+        categoryButton.setTitle(title, for: .normal)
     }
     
     public func resetButtonState() {
